@@ -57,9 +57,70 @@ function spawnPlanet() {
     });
 };
 
-let planetTimer = setInterval(spawnPlanet, 0700);
+let planetTimer = setInterval(spawnPlanet, 0800);
 document.addEventListener("DOMContentLoaded", spawnPlanet());
 
+function spawnBonus() {
+
+    const margin = 20;
+
+    const elemType = Math.floor(Math.random() * 2);
+
+    let newBonus = document.createElement("img");
+
+    if (elemType === 0) {
+        newBonus.src = "pics/chrono.svg";
+        newBonus.className += "chrono";
+        newBonus.style.width = 128 + "px";
+    } else {
+        newBonus.src = "pics/pill.svg";
+        newBonus.className += "booster";
+        newBonus.style.width = 128 + "px";
+    }
+    newBonus.className += " fly";
+
+    newBonus.onmouseover = function () {
+        mouseOver(this)
+    };
+
+    document.getElementById('main').appendChild(newBonus);
+
+
+    // DEFINITION DES DIRECTIONS
+    // 0:top, 1:right, 2:bottom, 3:left
+    const side = Math.floor(Math.random() * 4);
+    const fromX = Math.floor(Math.random() * (window.innerWidth - 2 * margin)) + margin;
+    const fromY = Math.floor(Math.random() * (window.innerHeight - 2 * margin)) + margin;
+
+    if (side === 0) { // top
+        newBonus.style.top = 0;
+        newBonus.style.left = fromX + "px";
+        newBonus.style.animationName = "fly-from-top";
+
+    } else if (side === 1) { // right
+        newBonus.style.right = 0;
+        newBonus.style.top = fromY + "px";
+        newBonus.style.animationName = "fly-from-right"
+
+    } else if (side === 2) { // bottom
+        newBonus.style.bottom = 0;
+        newBonus.style.left = fromX + "px";
+        newBonus.style.animationName = "fly-from-bottom";
+
+    } else if (side === 3) { // left
+        newBonus.style.left = 0;
+        newBonus.style.top = fromY + "px";
+        newBonus.style.animationName = "fly-from-left";
+
+    }
+
+    newBonus.addEventListener('animationend', function () {
+        this.parentNode.removeChild(this);
+    });
+};
+
+let bonusTimer = setInterval(spawnBonus, 9000);
+document.addEventListener("DOMContentLoaded", spawnBonus());
 
 // TRAINEE 
 window.addEventListener("mousemove", function (evenementmousemove) {
@@ -197,12 +258,29 @@ window.addEventListener("mousemove", function (evenementmousemove) {
 // mouseOver allez salut !
 
 let cpt = 0;
+let timeLeft = 30;
+let timer = document.getElementById("timer");
+let popup = document.getElementById("score");
+let cover = document.getElementById("cover");
+let rejouer = document.getElementById("rejouer");
+
 
 function mouseOver(el) {
     if (el.classList.contains("goodplanet")) {
         el.style.display = "none";
         cpt++;
         document.getElementById("baclette").innerHTML = "Score : " + cpt;
+
+    } else if (el.classList.contains("chrono")) {
+        el.style.display = "none";
+        timeLeft = timeLeft + 9;
+        timer.innerHTML = timeLeft;
+
+    } else if (el.classList.contains("booster")) {
+        el.style.display = "none";
+        cpt = cpt + 5;
+        document.getElementById("baclette").innerHTML = "Score : " + cpt;
+
     } else if (el.classList.contains("badplanet")) {
         if (cpt > 0) {
             el.style.display = "none";
@@ -225,17 +303,13 @@ function compteur() {
 
 //Fenetre score final + chrono
 
-let timeLeft = 30;
-let timer = document.getElementById("timer");
-let popup = document.getElementById("score");
-let cover = document.getElementById("cover");
-let rejouer = document.getElementById("rejouer");
 
 function countdown() {
 
     if (timeLeft < 0) {
         clearTimeout(timerId);
         clearTimeout(planetTimer);
+        clearTimeout(bonusTimer);
         let paragraph = document.getElementById("result");
         if (cpt == 0) {
             paragraph.innerHTML = "Ton score est de : " + cpt + ". La honte sur toi Maurice !!";
@@ -265,7 +339,10 @@ rejouer.addEventListener("click", function () {
     countdown();
     timerId = setInterval(countdown, 1000);
     spawnPlanet();
-    let planetTimer = setInterval(spawnPlanet, 0700);
+    spawnBonus();
+    planetTimer = setInterval(spawnPlanet, 0700);
+    bonusTimer = setInterval(spawnBonus, 9000);
+
 
 });
 
