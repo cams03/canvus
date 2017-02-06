@@ -80,7 +80,7 @@
          newBonus.className += "chrono";
          newBonus.style.width = 128 + "px";
      } else {
-         newBonus.src = "pics/pill.svg";
+         newBonus.src = "pics/star.svg";
          newBonus.className += "booster";
          newBonus.style.width = 128 + "px";
      }
