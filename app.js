@@ -137,7 +137,7 @@
      function onTouchMove(e) {
          if (e.touches.length > 0) {
              for (var i = 0; i < e.touches.length; i++) {
-                 addParticle(e.touches[i].clientX, e.touches[i].clientY);
+                 //addParticle(e.touches[i].clientX, e.touches[i].clientY);
              }
          }
      }
@@ -146,14 +146,14 @@
          cursor.x = e.clientX;
          cursor.y = e.clientY;
 
-         addParticle(cursor.x, cursor.y);
+         //addParticle(cursor.x, cursor.y);
      }
 
-     function addParticle(x, y) {
+     /*function addParticle(x, y) {
          var particle = new Particle();
          particle.init(x, y);
          particles.push(particle);
-     }
+     }*/
 
      /*function updateParticles() {
          for (var i = 0; i < particles.length; i++) {

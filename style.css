@@ -2,6 +2,10 @@
          font-family: space;
          src: url(space.ttf);
      }
+@font-face {
+        font-family: "zekton";
+        src: url(zekton.ttf);
+    }
      
      html {
          cursor: none;
@@ -82,7 +86,7 @@
      }
      
      #score p {
-         font-family: space, sans-serif;
+         font-family: "zekton", sans-serif;
          font-size: 40px;
          color: #9b158b;
          margin: 10px;
@@ -90,6 +94,7 @@
      
      #cover.visible {
          display: flex;
+         margin: auto;
      }
      
      #score.visible {
