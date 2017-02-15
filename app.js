@@ -292,9 +292,9 @@
          clearTimeout(planetTimer);
          clearTimeout(bonusTimer);
          let paragraph = document.getElementById("result");
-         if (cpt == 0) {
+         if (cpt < 20) {
              paragraph.innerHTML = "Ton score est de : " + cpt + ". La honte sur toi Maurice !!";
-         } else if (cpt < 20) {
+         } else if (cpt < 80) {
              paragraph.innerHTML = "Mouais ton score est de : " + cpt + ". Tu peux faire mieux mon vieux !";
          } else {
              paragraph.innerHTML = "Ton score est de : " + cpt + ". T'es un killer !!";
@@ -326,6 +326,12 @@
 
 
  });
+
+function harder () {
+    if (cpt > 80) {
+        planetTimer = setInterval(spawnPlanet, 0600);
+    }
+}
 
  //MUSIC PLAY ON OFF
 
