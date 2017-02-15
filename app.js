@@ -327,11 +327,6 @@
 
  });
 
-function harder () {
-    if (cpt > 80) {
-        planetTimer = setInterval(spawnPlanet, 0600);
-    }
-}
 
  //MUSIC PLAY ON OFF
 
