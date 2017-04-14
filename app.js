@@ -1,4 +1,5 @@
  const margin = 20;
+  let cpt = 0;
 
  function direction(el) {
 
@@ -62,10 +63,19 @@
      newPlanet.addEventListener('animationend', function () {
          this.parentNode.removeChild(this);
      });
+
  };
 
- let planetTimer = setInterval(spawnPlanet, 0700);
+ let planetTimer = setInterval(spawnPlanet, 2000);
  document.addEventListener("DOMContentLoaded", spawnPlanet());
+
+ if (cpt > 5 && cpt <10) {
+   planetTimer = setInterval(spawnPlanet, 1000);
+ } else if (cpt >= 10 && cpt < 15) {
+   planetTimer = setInterval(spawnPlanet, 0700);
+ } else if (cpt > 15) {
+   planetTimer = setInterval(spawnPlanet, 0500);
+ }
 
  function spawnBonus() {
 
@@ -92,7 +102,6 @@
 
      document.getElementById('main').appendChild(newBonus);
 
-
      direction(newBonus);
 
      newBonus.addEventListener('animationend', function () {
@@ -103,7 +112,7 @@
  let bonusTimer = setInterval(spawnBonus, 9000);
  document.addEventListener("DOMContentLoaded", spawnBonus());
 
- // TRAINEE 
+ // TRAINEE
  window.addEventListener("mousemove", function (evenementmousemove) {
      document.getElementById("cursorperso").style.top = evenementmousemove.clientY - 50 + 'px';
      document.getElementById("cursorperso").style.left = evenementmousemove.clientX - 50 + 'px';
@@ -238,12 +247,6 @@
 
  // mouseOver allez salut !
 
- let cpt = 0;
- let timeLeft = 30;
- let timer = document.getElementById("timer");
- let popup = document.getElementById("score");
- let cover = document.getElementById("cover");
- let rejouer = document.getElementById("rejouer");
 
 
  function mouseOver(el) {
@@ -275,12 +278,21 @@
      }
  }
 
+
+ let timeLeft = 30;
+ let timer = document.getElementById("timer");
+ let popup = document.getElementById("score");
+ let cover = document.getElementById("cover");
+ let rejouer = document.getElementById("rejouer");
+
  // compteur de points
 
  function compteur() {
 
      let baclette = document.getElementById("baclette");
  }
+
+
 
  //Fenetre score final + chrono
 
@@ -307,8 +319,9 @@
      } else {
          timer.innerHTML = timeLeft;
          timeLeft--;
-     }
+    }
  };
+
  let timerId = setInterval(countdown, 1000);
  document.addEventListener("DOMContentLoaded", countdown());
 
@@ -326,6 +339,8 @@
 
 
  });
+
+
 
 
  //MUSIC PLAY ON OFF
