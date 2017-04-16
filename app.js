@@ -103,7 +103,7 @@
  let bonusTimer = setInterval(spawnBonus, 9000);
  document.addEventListener("DOMContentLoaded", spawnBonus());
 
- // TRAINEE 
+ // TRAINEE
  window.addEventListener("mousemove", function (evenementmousemove) {
      document.getElementById("cursorperso").style.top = evenementmousemove.clientY - 50 + 'px';
      document.getElementById("cursorperso").style.left = evenementmousemove.clientX - 50 + 'px';
@@ -278,7 +278,7 @@
  // compteur de points
 
  function compteur() {
-
+//span où le score est affiché
      let baclette = document.getElementById("baclette");
  }
 
@@ -286,12 +286,15 @@
 
 
  function countdown() {
-
+//si le temps qui reste est inférieur à zéro
      if (timeLeft < 0) {
+       //clearTimeout suspend le timer,le bonus et les planètes
          clearTimeout(timerId);
          clearTimeout(planetTimer);
          clearTimeout(bonusTimer);
+         //c'est la fenêtre modale qui apparaît à la fin
          let paragraph = document.getElementById("result");
+         //si le cpt (cad les points) est inférieur à 20
          if (cpt < 20) {
              paragraph.innerHTML = "Ton score est de : " + cpt + ". La honte sur toi Maurice !!";
          } else if (cpt < 80) {
@@ -299,19 +302,23 @@
          } else {
              paragraph.innerHTML = "Ton score est de : " + cpt + ". T'es un killer !!";
          }
-
+//va sur le h1 pour introduire une phrase selon les points reçus
          document.querySelector("h1").appendChild(paragraph);
+         //classList pour l'ajouter dans les id cover et score
          cover.classList.add("visible");
          popup.classList.add("visible");
 
      } else {
+       //sinon continue à afficher le temps qui reste
          timer.innerHTML = timeLeft;
          timeLeft--;
      }
  };
+ //création d'une variable pour mettre une intervalle réguliere de chaque seconde
  let timerId = setInterval(countdown, 1000);
+ //création d'un add Event Listener pour le compteur
  document.addEventListener("DOMContentLoaded", countdown());
-
+//add event listener pour rejouer et recommencer à zéro
  rejouer.addEventListener("click", function () {
      cover.classList.remove("visible");
      popup.classList.remove("visible");
