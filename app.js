@@ -240,6 +240,8 @@
 
  let cpt = 0;
  let timeLeft = 30;
+ //my highscore
+ let highscore = 0;
  let timer = document.getElementById("timer");
  let popup = document.getElementById("score");
  let cover = document.getElementById("cover");
@@ -307,6 +309,8 @@
          //classList pour l'ajouter dans les id cover et score
          cover.classList.add("visible");
          popup.classList.add("visible");
+    //dans le localStorage
+    localStorage.setItem(highscore,cpt);
 
      } else {
        //sinon continue à afficher le temps qui reste
