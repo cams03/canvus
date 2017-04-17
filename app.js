@@ -310,7 +310,7 @@
          cover.classList.add("visible");
          popup.classList.add("visible");
     //dans le localStorage
-    localStorage.setItem(highscore,cpt);
+    localStorage.setItem('highscore',cpt);
 
      } else {
        //sinon continue à afficher le temps qui reste
