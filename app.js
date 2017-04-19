@@ -240,8 +240,6 @@
 
  let cpt = 0;
  let timeLeft = 30;
- //my highscore
- let highscore = 0;
  let timer = document.getElementById("timer");
  let popup = document.getElementById("score");
  let cover = document.getElementById("cover");
@@ -294,23 +292,30 @@
          clearTimeout(timerId);
          clearTimeout(planetTimer);
          clearTimeout(bonusTimer);
+         //le local STorage
+         //my highscore
+         let score = 0;
+         let highscore;
+         //J'attrape le score
+         let score = localStorage.setItem('highscore',cpt);
          //c'est la fenêtre modale qui apparaît à la fin
          let paragraph = document.getElementById("result");
          //si le cpt (cad les points) est inférieur à 20
          if (cpt < 20) {
-             paragraph.innerHTML = "Ton score est de : " + cpt + ". La honte sur toi Maurice !!";
+             paragraph.innerHTML = "Ton score est de : " + cpt + ". La honte sur toi Maurice !!" + "\nTon meilleur score est de " + score + ".";
          } else if (cpt < 80) {
-             paragraph.innerHTML = "Mouais ton score est de : " + cpt + ". Tu peux faire mieux mon vieux !";
+             paragraph.innerHTML = "Mouais ton score est de : " + cpt + ". Tu peux faire mieux mon vieux !" + "\nTon meilleur score est de " + score + ".";
          } else {
-             paragraph.innerHTML = "Ton score est de : " + cpt + ". T'es un killer !!";
+           paragraph.innerHTML = "T'es un killer !";
          }
          //va sur le h1 pour introduire une phrase selon les points reçus
          document.querySelector("h1").appendChild(paragraph);
          //classList pour l'ajouter dans les id cover et score
          cover.classList.add("visible");
          popup.classList.add("visible");
-         //dans le localStorage, les points sera enregistrer
-         localStorage.setItem('highscore', cpt);
+
+
+
 
      } else {
          //sinon continue à afficher le temps qui reste
