@@ -161,7 +161,7 @@
      .fly {
          position: absolute;
          animation-duration: 1.5s;
-         animation-timing-function: linear;
+         animation-timing-function: linear;;
          z-index: 12;
      }
 
@@ -178,8 +178,8 @@
          }
 
          15% {
-        left: 50px;
-        top: -50px;
+        left: 400px;/*50*/
+        top: -100px;/*-50*/
         }
 
         30% {
@@ -188,13 +188,13 @@
         }
 
         45% {
-        left: 150px;
-        top: -50px;
+        left: 250px;/*150*/
+        top: -10px;/*-50*/
         }
 
         60% {
-        left: 200px;
-        top: 0;
+        left: 200px;/*200*/
+        top: 0;/*0*/
         }
 
         75% {
