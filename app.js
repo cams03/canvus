@@ -1,5 +1,4 @@
  const margin = 20;
-  let cpt = 0;
 
  function direction(el) {
 
@@ -69,14 +68,6 @@
  let planetTimer = setInterval(spawnPlanet, 2000);
  document.addEventListener("DOMContentLoaded", spawnPlanet());
 
- if (cpt > 5 && cpt <10) {
-   planetTimer = setInterval(spawnPlanet, 1000);
- } else if (cpt >= 10 && cpt < 15) {
-   planetTimer = setInterval(spawnPlanet, 0700);
- } else if (cpt > 15) {
-   planetTimer = setInterval(spawnPlanet, 0500);
- }
-
  function spawnBonus() {
 
      const margin = 20;
@@ -112,149 +103,12 @@
  let bonusTimer = setInterval(spawnBonus, 9000);
  document.addEventListener("DOMContentLoaded", spawnBonus());
 
- // TRAINEE
+//CURSEUR
 
  window.addEventListener("mousemove", function(evenementmousemove) {
      document.getElementById("cursorperso").style.top = evenementmousemove.clientY - 50 + 'px';
      document.getElementById("cursorperso").style.left = evenementmousemove.clientX - 50 + 'px';
  });
-
- (function batCursor() {
-
-     var width = window.innerWidth;
-     var height = window.innerHeight;
-     var cursor = {
-         x: width / 2,
-         y: width / 2
-     };
-
-     function init() {
-         bindEvents();
-
-         loop();
-     }
-
-     function bindEvents() {
-         document.addEventListener('mousemove', onMouseMove);
-         window.addEventListener('resize', onWindowResize);
-     }
-
-     function onWindowResize(e) {
-         width = window.innerWidth;
-         height = window.innerHeight;
-     }
-
-     function onTouchMove(e) {
-         if (e.touches.length > 0) {
-             for (var i = 0; i < e.touches.length; i++) {
-                 //addParticle(e.touches[i].clientX, e.touches[i].clientY);
-             }
-         }
-     }
-
-     function onMouseMove(e) {
-         cursor.x = e.clientX;
-         cursor.y = e.clientY;
-
-         //addParticle(cursor.x, cursor.y);
-     }
-
-     /*function addParticle(x, y) {
-         var particle = new Particle();
-         particle.init(x, y);
-         particles.push(particle);
-     }*/
-
-     /*function updateParticles() {
-         for (var i = 0; i < particles.length; i++) {
-             particles[i].update();
-         }
-
-         for (var i = particles.length - 1; i >= 0; i--) {
-             if (particles[i].lifeSpan < 0) {
-                 particles[i].die();
-                 particles.splice(i, 1);
-             }
-         }
-
-     }*/
-
-     function loop() {
-         requestAnimationFrame(loop);
-
-     }
-
-     /*function Particle() {
-
-         this.lifeSpan = 200;
-
-         this.init = function (x, y) {
-
-             this.velocity = {
-                 x: (Math.random() < 0.5 ? -1 : 1) * (Math.random() * 2),
-                 y: (-2.5 + (Math.random() * -1))
-             };
-
-             this.position = {
-                 x: x - 1,
-                 y: y - 1
-             };
-
-             this.element = document.createElement('span');
-             this.element.className = "particle-santa"
-             this.update();
-
-             document.body.appendChild(this.element);
-         };
-
-         this.update = function () {
-             this.position.x += this.velocity.x;
-             this.position.y += this.velocity.y;
-
-             this.velocity.x += (Math.random() < 0.5 ? -1 : 1) * 2 / 75;
-             this.velocity.y -= Math.random() / 600;
-             this.lifeSpan--;
-
-             this.element.style.transform = "translate3d(" + this.position.x + "px," + this.position.y + "px,0) scale(" + (0.2 + (250 - this.lifeSpan) / 250) + ")";
-         }
-
-         this.die = function () {
-             this.element.parentNode.removeChild(this.element);
-         }
-     }
-
-     function attachInitialParticleStyles() {
-
-         var initialStyles = [
-            ".particle-santa {",
-            "position: absolute;",
-            "display: block;",
-            "pointer-events: none;",
-            "z-index: 10000000;",
-            "width: 20px;",
-            "height: 20px;",
-            "background-size: contain;",
-            "background-image: url(pics/santa.png);",
-           "}"].join('');
-
-         var style = document.createElement('style')
-         style.type = 'text/css'
-         style.innerHTML = initialStyles;
-         document.getElementsByTagName('head')[0].appendChild(style)
-     };*/
-
-     init();
- })();
-
- // mouseOver allez salut !
- let cpt = 0;
- let timeLeft = 30;
- //my highscore
- let highscore = 0;
- let timer = document.getElementById("timer");
- let popup = document.getElementById("score");
- let cover = document.getElementById("cover");
- let rejouer = document.getElementById("rejouer");
 
  function mouseOver(el) {
      if (el.classList.contains("goodplanet")) {
@@ -280,29 +134,51 @@
          } else {
              el.style.display = "none";
              document.getElementById("baclette").innerHTML = "Score : 0";
-
          }
      }
  }
 
- // compteur de points
+ let cpt = 0;
+ let timeLeft = 30;
+ //my highscore
+ let highscore = 0;
+ let timer = document.getElementById("timer");
+ let popup = document.getElementById("score");
+ let cover = document.getElementById("cover");
+ let rejouer = document.getElementById("rejouer");
 
+ // compteur de points
  function compteur() {
      //span où le score est affiché
      let baclette = document.getElementById("baclette");
  }
 
+ let planetTimer2, planetTimer3, planetTimer4;
 
+ function level() {
+   if (cpt >= 40 && planetTimer3) {
+      clearInterval(planetTimer3);
+      delete planetTimer3;
+      planetTimer4 = setInterval(spawnPlanet, 500);
+   } else if (cpt >= 20 && planetTimer2) {
+      clearInterval(planetTimer2);
+      delete planetTimer2;
+      planetTimer3 = setInterval(spawnPlanet, 700);
+   } else if (cpt >= 5 && planetTimer) {
+     clearInterval(planetTimer);
+     delete planetTimer;
+     planetTimer2 = setInterval(spawnPlanet, 1000);
+  }
+ }
 
  //Fenetre score final + chrono
-
-
  function countdown() {
+   level()
      //si le temps qui reste est inférieur à zéro
      if (timeLeft < 0) {
          //clearTimeout suspend le timer,le bonus et les planètes
          clearTimeout(timerId);
-         clearTimeout(planetTimer);
+         clearInterval(planetTimer);
          clearTimeout(bonusTimer);
          //c'est la fenêtre modale qui apparaît à la fin
          let paragraph = document.getElementById("result");
@@ -329,7 +205,7 @@
     }
  };
 
- //création d'une variable pour mettre une intervalle réguliere de chaque seconde
+ //cr�ation d'une variable pour mettre une intervalle réguliere de chaque seconde
  let timerId = setInterval(countdown, 1000);
  //création d'un add Event Listener pour le compteur
  document.addEventListener("DOMContentLoaded", countdown());
@@ -348,9 +224,6 @@
 
 
  });
-
-
-
 
  //MUSIC PLAY ON OFF
 
