@@ -52,7 +52,7 @@
      }
      newPlanet.className += " fly";
 
-     newPlanet.onmouseover = function () {
+     newPlanet.onmouseover = function() {
          mouseOver(this)
      };
 
@@ -60,7 +60,7 @@
 
      direction(newPlanet);
 
-     newPlanet.addEventListener('animationend', function () {
+     newPlanet.addEventListener('animationend', function() {
          this.parentNode.removeChild(this);
      });
 
@@ -96,7 +96,7 @@
      }
      newBonus.className += " fly";
 
-     newBonus.onmouseover = function () {
+     newBonus.onmouseover = function() {
          mouseOver(this)
      };
 
@@ -104,7 +104,7 @@
 
      direction(newBonus);
 
-     newBonus.addEventListener('animationend', function () {
+     newBonus.addEventListener('animationend', function() {
          this.parentNode.removeChild(this);
      });
  };
@@ -113,7 +113,8 @@
  document.addEventListener("DOMContentLoaded", spawnBonus());
 
  // TRAINEE
- window.addEventListener("mousemove", function (evenementmousemove) {
+
+ window.addEventListener("mousemove", function(evenementmousemove) {
      document.getElementById("cursorperso").style.top = evenementmousemove.clientY - 50 + 'px';
      document.getElementById("cursorperso").style.left = evenementmousemove.clientX - 50 + 'px';
  });
@@ -246,8 +247,14 @@
  })();
 
  // mouseOver allez salut !
-
-
+ let cpt = 0;
+ let timeLeft = 30;
+ //my highscore
+ let highscore = 0;
+ let timer = document.getElementById("timer");
+ let popup = document.getElementById("score");
+ let cover = document.getElementById("cover");
+ let rejouer = document.getElementById("rejouer");
 
  function mouseOver(el) {
      if (el.classList.contains("goodplanet")) {
@@ -278,17 +285,10 @@
      }
  }
 
-
- let timeLeft = 30;
- let timer = document.getElementById("timer");
- let popup = document.getElementById("score");
- let cover = document.getElementById("cover");
- let rejouer = document.getElementById("rejouer");
-
  // compteur de points
 
  function compteur() {
-
+     //span où le score est affiché
      let baclette = document.getElementById("baclette");
  }
 
@@ -298,12 +298,15 @@
 
 
  function countdown() {
-
+     //si le temps qui reste est inférieur à zéro
      if (timeLeft < 0) {
+         //clearTimeout suspend le timer,le bonus et les planètes
          clearTimeout(timerId);
          clearTimeout(planetTimer);
          clearTimeout(bonusTimer);
+         //c'est la fenêtre modale qui apparaît à la fin
          let paragraph = document.getElementById("result");
+         //si le cpt (cad les points) est inférieur à 20
          if (cpt < 20) {
              paragraph.innerHTML = "Ton score est de : " + cpt + ". La honte sur toi Maurice !!";
          } else if (cpt < 80) {
@@ -311,21 +314,27 @@
          } else {
              paragraph.innerHTML = "Ton score est de : " + cpt + ". T'es un killer !!";
          }
-
+         //va sur le h1 pour introduire une phrase selon les points reçus
          document.querySelector("h1").appendChild(paragraph);
+         //classList pour l'ajouter dans les id cover et score
          cover.classList.add("visible");
          popup.classList.add("visible");
+         //dans le localStorage, les points sera enregistrer
+         localStorage.setItem('highscore', cpt);
 
      } else {
+         //sinon continue à afficher le temps qui reste
          timer.innerHTML = timeLeft;
          timeLeft--;
     }
  };
 
+ //création d'une variable pour mettre une intervalle réguliere de chaque seconde
  let timerId = setInterval(countdown, 1000);
+ //création d'un add Event Listener pour le compteur
  document.addEventListener("DOMContentLoaded", countdown());
-
- rejouer.addEventListener("click", function () {
+ //add event listener pour rejouer et recommencer à zéro
+ rejouer.addEventListener("click", function() {
      cover.classList.remove("visible");
      popup.classList.remove("visible");
      cpt = 0;
@@ -345,13 +354,13 @@
 
  //MUSIC PLAY ON OFF
 
- document.getElementById('mute').addEventListener("click", function () {
+ document.getElementById('mute').addEventListener("click", function() {
      document.getElementById('music').pause();
      document.getElementById('sound').classList.add('visible');
      document.getElementById('mute').classList.remove('visible');
  });
 
- document.getElementById('sound').addEventListener("click", function () {
+ document.getElementById('sound').addEventListener("click", function() {
      document.getElementById('music').play();
      document.getElementById('sound').classList.remove('visible');
      document.getElementById('mute').classList.add('visible');

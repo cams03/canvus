@@ -6,14 +6,14 @@
         font-family: "zekton";
         src: url(zekton.ttf);
     }
-    
+
     body {
         margin: 0;
         background-image: url("pics/couv4.jpg");
         background-size: cover;
         font-family: space, sans-serif;
     }
-    
+
     .container {
         display: flex;
         flex-direction: column;
@@ -22,65 +22,67 @@
         margin: 0 auto;
         height: 500px;
     }
-    
+
     h1,
     .accroche {
         width: 100%;
         color: #d35400;
         text-align: center;
     }
-    
+
     h1 {
         font-size: 90px;
     }
-    
+
     .accroche {
         font-size: 40px;
     }
-    
+
     .inside_container {
         width: 70%;
         display: flex;
         margin: auto;
         justify-content: space-around;
     }
-    
+
     #play,
-    #rules {
+    #rules,
+    #stat {
         width: 15%;
         height: 100%;
         color: #9b158b;
         font-size: 30px;
     }
-    
+
     #rules {
         margin-top: 0;
         width: 40%;
         text-decoration: underline;
         cursor: pointer;
     }
-    
+
     #play:hover,
-    #rules:hover {
+    #rules:hover,
+    #stat:hover {
         transform: scale(1.2);
     }
-    
+
     #rules_p {
         display: none;
         background-color: rgba(84, 79, 79, 0.7);
         text-align: center;
         font-family: "zekton";
     }
-    
+
     #rules_p.visible {
         display: block;
     }
-    
+
     #rules_p p {
         color: white;
         font-size: 20px;
     }
-    
+
     footer {
         width: 100%;
         position: absolute;
@@ -90,7 +92,7 @@
         font-size: 10px;
         color: #d35400;
     }
-    
+
     @media screen and (max-width: 600px) {
         .container {
             width: auto;
