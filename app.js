@@ -1,161 +1,159 @@
- const margin = 20;
+const margin = 20;
 
- function direction(el) {
+function direction(el) {
 
-     // DEFINITION DES DIRECTIONS
-     // 0:top, 1:right, 2:bottom, 3:left
-     const side = Math.floor(Math.random() * 4); // tirage aléatoire d'un nombre entre 0 et 4 qui définira le point de départ
+  // DEFINITION DES DIRECTIONS
+  // 0:top, 1:right, 2:bottom, 3:left
+  const side = Math.floor(Math.random() * 4); // tirage aléatoire d'un nombre entre 0 et 4 qui définira le point de départ
 
-     const fromX = Math.floor(Math.random() * (window.innerWidth - 2 * margin)) + margin; //tirage aléatoire d'un nombre entre 20 (margin) et 980 (largeur de la fenêtre - margin) afin de définir une position horizontale
+  const fromX = Math.floor(Math.random() * (window.innerWidth - 2 * margin)) + margin; //tirage aléatoire d'un nombre entre 20 (margin) et 980 (largeur de la fenêtre - margin) afin de définir une position horizontale
 
-     const fromY = Math.floor(Math.random() * (window.innerHeight - 2 * margin)) + margin; //tirage aléatoire d'un nombre entre 20 (margin) et 980 (largeur de la fenêtre - margin) afin de définir une position verticale
+  const fromY = Math.floor(Math.random() * (window.innerHeight - 2 * margin)) + margin; //tirage aléatoire d'un nombre entre 20 (margin) et 980 (largeur de la fenêtre - margin) afin de définir une position verticale
 
-     if (side === 0) { // top
-         el.style.top = 0;
-         el.style.left = fromX + "px";
-         el.style.animationName = "fly-from-top";
+  if (side === 0) { // top
+    el.style.top = 0;
+    el.style.left = fromX + "px";
+    el.style.animationName = "fly-from-top";
 
-     } else if (side === 1) { // right
-         el.style.right = 0;
-         el.style.top = fromY + "px";
-         el.style.animationName = "fly-from-right"
+  } else if (side === 1) { // right
+    el.style.right = 0;
+    el.style.top = fromY + "px";
+    el.style.animationName = "fly-from-right"
 
-     } else if (side === 2) { // bottom
-         el.style.bottom = 0;
-         el.style.left = fromX + "px";
-         el.style.animationName = "fly-from-bottom";
+  } else if (side === 2) { // bottom
+    el.style.bottom = 0;
+    el.style.left = fromX + "px";
+    el.style.animationName = "fly-from-bottom";
 
-     } else if (side === 3) { // left
-         el.style.left = 0;
-         el.style.top = fromY + "px";
-         el.style.animationName = "fly-from-left";
+  } else if (side === 3) { // left
+    el.style.left = 0;
+    el.style.top = fromY + "px";
+    el.style.animationName = "fly-from-left";
 
-     }
+  }
 
- }
+}
 
- function spawnPlanet() {
+function spawnPlanet() {
 
+  // VISIBILITE BON / MAUVAIS
+  const elemType = Math.floor(Math.random() * 2); //tirage aléatoire d'un nombre entre 0 et 2 (car 2 éléments 1 bon et 1 mauvais)
 
-     // VISIBILITE BON / MAUVAIS
-     const elemType = Math.floor(Math.random() * 2); //tirage aléatoire d'un nombre entre 0 et 2 (car 2 éléments 1 bon et 1 mauvais)
+  let newPlanet = document.createElement("img"); // création d'un élément image
 
-     let newPlanet = document.createElement("img"); // création d'un élément image
+  if (elemType === 0) {
+    newPlanet.src = "pics/earth.png"; // élément à toucher pour gagner 5 pts
+    newPlanet.className += " goodplanet";
+  } else {
+    newPlanet.src = "pics/hell.png"; // élément à éviter
+    newPlanet.className += " badplanet";
+  }
+  newPlanet.className += " fly";
 
-     if (elemType === 0) {
-         newPlanet.src = "pics/earth.png"; // élément à toucher pour gagner 5 pts
-         newPlanet.className += " goodplanet";
-     } else {
-         newPlanet.src = "pics/hell.png"; // élément à éviter
-         newPlanet.className += " badplanet";
-     }
-     newPlanet.className += " fly";
+  newPlanet.onmouseover = function() {
+    mouseOver(this)
+  };
 
-     newPlanet.onmouseover = function() {
-         mouseOver(this)
-     };
+  document.getElementById('main').appendChild(newPlanet); //rattache l'objet créé à son parent (#jeu)
 
-     document.getElementById('main').appendChild(newPlanet); //rattache l'objet créé à son parent (#jeu)
+  direction(newPlanet);
 
-     direction(newPlanet);
+  newPlanet.addEventListener('animationend', function() {
+    this.parentNode.removeChild(this);
+  });
+};
 
-     newPlanet.addEventListener('animationend', function() {
-         this.parentNode.removeChild(this);
-     });
- };
+let planetTimer = setInterval(spawnPlanet, 0700);
+document.addEventListener("DOMContentLoaded", spawnPlanet());
 
- let planetTimer = setInterval(spawnPlanet, 0700);
- document.addEventListener("DOMContentLoaded", spawnPlanet());
+function spawnBonus() {
 
- function spawnBonus() {
+  const margin = 20;
 
-     const margin = 20;
+  const elemType = Math.floor(Math.random() * 2);
 
-     const elemType = Math.floor(Math.random() * 2);
+  let newBonus = document.createElement("img");
 
-     let newBonus = document.createElement("img");
+  if (elemType === 0) {
+    newBonus.src = "pics/chrono.svg";
+    newBonus.className += "chrono";
+    newBonus.style.width = 128 + "px";
+  } else {
+    newBonus.src = "pics/star.svg";
+    newBonus.className += "booster";
+    newBonus.style.width = 128 + "px";
+  }
+  newBonus.className += " fly";
 
-     if (elemType === 0) {
-         newBonus.src = "pics/chrono.svg";
-         newBonus.className += "chrono";
-         newBonus.style.width = 128 + "px";
-     } else {
-         newBonus.src = "pics/star.svg";
-         newBonus.className += "booster";
-         newBonus.style.width = 128 + "px";
-     }
-     newBonus.className += " fly";
+  newBonus.onmouseover = function() {
+    mouseOver(this)
+  };
 
-     newBonus.onmouseover = function() {
-         mouseOver(this)
-     };
+  document.getElementById('main').appendChild(newBonus);
 
-     document.getElementById('main').appendChild(newBonus);
+  direction(newBonus);
 
+  newBonus.addEventListener('animationend', function() {
+    this.parentNode.removeChild(this);
+  });
+};
 
-     direction(newBonus);
+let bonusTimer = setInterval(spawnBonus, 9000);
+document.addEventListener("DOMContentLoaded", spawnBonus());
 
-     newBonus.addEventListener('animationend', function() {
-         this.parentNode.removeChild(this);
-     });
- };
+// TRAINEE
+window.addEventListener("mousemove", function(evenementmousemove) {
+  document.getElementById("cursorperso").style.top = evenementmousemove.clientY - 50 + 'px';
+  document.getElementById("cursorperso").style.left = evenementmousemove.clientX - 50 + 'px';
+});
 
- let bonusTimer = setInterval(spawnBonus, 9000);
- document.addEventListener("DOMContentLoaded", spawnBonus());
+(function batCursor() {
 
- // TRAINEE
- window.addEventListener("mousemove", function(evenementmousemove) {
-     document.getElementById("cursorperso").style.top = evenementmousemove.clientY - 50 + 'px';
-     document.getElementById("cursorperso").style.left = evenementmousemove.clientX - 50 + 'px';
- });
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+  var cursor = {
+    x: width / 2,
+    y: width / 2
+  };
 
- (function batCursor() {
+  function init() {
+    bindEvents();
 
-     var width = window.innerWidth;
-     var height = window.innerHeight;
-     var cursor = {
-         x: width / 2,
-         y: width / 2
-     };
+    loop();
+  }
 
-     function init() {
-         bindEvents();
+  function bindEvents() {
+    document.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('resize', onWindowResize);
+  }
 
-         loop();
-     }
+  function onWindowResize(e) {
+    width = window.innerWidth;
+    height = window.innerHeight;
+  }
 
-     function bindEvents() {
-         document.addEventListener('mousemove', onMouseMove);
-         window.addEventListener('resize', onWindowResize);
-     }
+  function onTouchMove(e) {
+    if (e.touches.length > 0) {
+      for (var i = 0; i < e.touches.length; i++) {
+        //addParticle(e.touches[i].clientX, e.touches[i].clientY);
+      }
+    }
+  }
 
-     function onWindowResize(e) {
-         width = window.innerWidth;
-         height = window.innerHeight;
-     }
+  function onMouseMove(e) {
+    cursor.x = e.clientX;
+    cursor.y = e.clientY;
 
-     function onTouchMove(e) {
-         if (e.touches.length > 0) {
-             for (var i = 0; i < e.touches.length; i++) {
-                 //addParticle(e.touches[i].clientX, e.touches[i].clientY);
-             }
-         }
-     }
+    //addParticle(cursor.x, cursor.y);
+  }
 
-     function onMouseMove(e) {
-         cursor.x = e.clientX;
-         cursor.y = e.clientY;
-
-         //addParticle(cursor.x, cursor.y);
-     }
-
-     /*function addParticle(x, y) {
+  /*function addParticle(x, y) {
          var particle = new Particle();
          particle.init(x, y);
          particles.push(particle);
      }*/
 
-     /*function updateParticles() {
+  /*function updateParticles() {
          for (var i = 0; i < particles.length; i++) {
              particles[i].update();
          }
@@ -169,12 +167,12 @@
 
      }*/
 
-     function loop() {
-         requestAnimationFrame(loop);
+  function loop() {
+    requestAnimationFrame(loop);
 
-     }
+  }
 
-     /*function Particle() {
+  /*function Particle() {
 
          this.lifeSpan = 200;
 
@@ -233,127 +231,132 @@
          document.getElementsByTagName('head')[0].appendChild(style)
      };*/
 
-     init();
- })();
+  init();
+})();
 
- // mouseOver allez salut !
+// mouseOver allez salut !
 
- let cpt = 0;
- let timeLeft = 30;
- let timer = document.getElementById("timer");
- let popup = document.getElementById("score");
- let cover = document.getElementById("cover");
- let rejouer = document.getElementById("rejouer");
+let cpt = 0;
+let timeLeft = 30;
+let timer = document.getElementById("timer");
+let popup = document.getElementById("score");
+let cover = document.getElementById("cover");
+let rejouer = document.getElementById("rejouer");
+
+function mouseOver(el) {
+  if (el.classList.contains("goodplanet")) {
+    el.style.display = "none";
+    cpt++;
+    document.getElementById("baclette").innerHTML = "Score : " + cpt;
+
+  } else if (el.classList.contains("chrono")) {
+    el.style.display = "none";
+    timeLeft = timeLeft + 9;
+    timer.innerHTML = timeLeft;
+
+  } else if (el.classList.contains("booster")) {
+    el.style.display = "none";
+    cpt = cpt + 5;
+    document.getElementById("baclette").innerHTML = "Score : " + cpt;
+
+  } else if (el.classList.contains("badplanet")) {
+    if (cpt > 0) {
+      el.style.display = "none";
+      cpt--;
+      document.getElementById("baclette").innerHTML = "Score : " + cpt;
+    } else {
+      el.style.display = "none";
+      document.getElementById("baclette").innerHTML = "Score : 0";
+
+    }
+  }
+}
+
+// compteur de points
+
+function compteur() {
+  //span où le score est affiché
+  let baclette = document.getElementById("baclette");
+}
+
+//Fenetre score final + chrono
+
+function countdown() {
+  //si le temps qui reste est inférieur à zéro
+  if (timeLeft < 0) {
+    //clearTimeout suspend le timer,le bonus et les planètes
+    clearTimeout(timerId);
+    clearTimeout(planetTimer);
+    clearTimeout(bonusTimer);
 
 
- function mouseOver(el) {
-     if (el.classList.contains("goodplanet")) {
-         el.style.display = "none";
-         cpt++;
-         document.getElementById("baclette").innerHTML = "Score : " + cpt;
 
-     } else if (el.classList.contains("chrono")) {
-         el.style.display = "none";
-         timeLeft = timeLeft + 9;
-         timer.innerHTML = timeLeft;
-
-     } else if (el.classList.contains("booster")) {
-         el.style.display = "none";
-         cpt = cpt + 5;
-         document.getElementById("baclette").innerHTML = "Score : " + cpt;
-
-     } else if (el.classList.contains("badplanet")) {
-         if (cpt > 0) {
-             el.style.display = "none";
-             cpt--;
-             document.getElementById("baclette").innerHTML = "Score : " + cpt;
-         } else {
-             el.style.display = "none";
-             document.getElementById("baclette").innerHTML = "Score : 0";
-
-         }
-     }
- }
-
- // compteur de points
-
- function compteur() {
-     //span où le score est affiché
-     let baclette = document.getElementById("baclette");
- }
-
- //Fenetre score final + chrono
-
-
- function countdown() {
-     //si le temps qui reste est inférieur à zéro
-     if (timeLeft < 0) {
-         //clearTimeout suspend le timer,le bonus et les planètes
-         clearTimeout(timerId);
-         clearTimeout(planetTimer);
-         clearTimeout(bonusTimer);
-         //le local STorage
-         //my highscore
-         let score = 0;
-         let highscore;
-         //J'attrape le score
-         let score = localStorage.setItem('highscore',cpt);
-         //c'est la fenêtre modale qui apparaît à la fin
-         let paragraph = document.getElementById("result");
-         //si le cpt (cad les points) est inférieur à 20
-         if (cpt < 20) {
-             paragraph.innerHTML = "Ton score est de : " + cpt + ". La honte sur toi Maurice !!" + "\nTon meilleur score est de " + score + ".";
-         } else if (cpt < 80) {
-             paragraph.innerHTML = "Mouais ton score est de : " + cpt + ". Tu peux faire mieux mon vieux !" + "\nTon meilleur score est de " + score + ".";
-         } else {
-           paragraph.innerHTML = "T'es un killer !";
-         }
-         //va sur le h1 pour introduire une phrase selon les points reçus
-         document.querySelector("h1").appendChild(paragraph);
-         //classList pour l'ajouter dans les id cover et score
-         cover.classList.add("visible");
-         popup.classList.add("visible");
+    //le local STorage
+    //tableau vide
+    let array = [];
+    //stocker la valeur cpt
+    window.localStorage.setItem('score', cpt);
+    //recupérer le score
+    let getScore = localStorage.getItem('score');
+    //convertit le string en nombre
+    let points = parseInt(getScore);
+    let results = array.push(points);
+    console.log(points);
 
 
 
 
-     } else {
-         //sinon continue à afficher le temps qui reste
-         timer.innerHTML = timeLeft;
-         timeLeft--;
-     }
- };
- //création d'une variable pour mettre une intervalle réguliere de chaque seconde
- let timerId = setInterval(countdown, 1000);
- //création d'un add Event Listener pour le compteur
- document.addEventListener("DOMContentLoaded", countdown());
- //add event listener pour rejouer et recommencer à zéro
- rejouer.addEventListener("click", function() {
-     cover.classList.remove("visible");
-     popup.classList.remove("visible");
-     cpt = 0;
-     timeLeft = 30;
-     countdown();
-     timerId = setInterval(countdown, 1000);
-     spawnPlanet();
-     spawnBonus();
-     planetTimer = setInterval(spawnPlanet, 0700);
-     bonusTimer = setInterval(spawnBonus, 9000);
+    //c'est la fenêtre modale qui apparaît à la fin
+    let paragraph = document.getElementById("result");
+    //si le cpt (cad les points) est inférieur à 20
+    if (cpt < 20) {
+      paragraph.innerHTML = "Ton score est de : " + cpt + ". La honte sur toi Maurice !!";
+    } else if (cpt < 80) {
+      paragraph.innerHTML = "Mouais ton score est de : " + cpt + ". Tu peux faire mieux mon vieux !";
+    } else {
+      paragraph.innerHTML = "T'es un killer !";
+    }
+    //va sur le h1 pour introduire une phrase selon les points reçus
+    document.querySelector("h1").appendChild(paragraph);
+    //classList pour l'ajouter dans les id cover et score
+    cover.classList.add("visible");
+    popup.classList.add("visible");
 
+  } else {
+    //sinon continue à afficher le temps qui reste
+    timer.innerHTML = timeLeft;
+    timeLeft--;
+  }
+};
+//création d'une variable pour mettre une intervalle réguliere de chaque seconde
+let timerId = setInterval(countdown, 1000);
+//création d'un add Event Listener pour le compteur
+document.addEventListener("DOMContentLoaded", countdown());
+//add event listener pour rejouer et recommencer à zéro
+rejouer.addEventListener("click", function() {
+  cover.classList.remove("visible");
+  popup.classList.remove("visible");
+  cpt = 0;
+  timeLeft = 30;
+  countdown();
+  timerId = setInterval(countdown, 1000);
+  spawnPlanet();
+  spawnBonus();
+  planetTimer = setInterval(spawnPlanet, 0700);
+  bonusTimer = setInterval(spawnBonus, 9000);
 
- });
+});
 
+//MUSIC PLAY ON OFF
 
- //MUSIC PLAY ON OFF
+document.getElementById('mute').addEventListener("click", function() {
+  document.getElementById('music').pause();
+  document.getElementById('sound').classList.add('visible');
+  document.getElementById('mute').classList.remove('visible');
+});
 
- document.getElementById('mute').addEventListener("click", function() {
-     document.getElementById('music').pause();
-     document.getElementById('sound').classList.add('visible');
-     document.getElementById('mute').classList.remove('visible');
- });
-
- document.getElementById('sound').addEventListener("click", function() {
-     document.getElementById('music').play();
-     document.getElementById('sound').classList.remove('visible');
-     document.getElementById('mute').classList.add('visible');
- });
+document.getElementById('sound').addEventListener("click", function() {
+  document.getElementById('music').play();
+  document.getElementById('sound').classList.remove('visible');
+  document.getElementById('mute').classList.add('visible');
+});
