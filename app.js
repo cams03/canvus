@@ -280,9 +280,11 @@ function compteur() {
 }
 
 //Fenetre score final + chrono
-
+//tableau vide - le mettre dans une valeur globale sinon ne prend pas en compte le nombre de parties
+let array = [];
 function countdown() {
   //si le temps qui reste est inférieur à zéro
+
   if (timeLeft < 0) {
     //clearTimeout suspend le timer,le bonus et les planètes
     clearTimeout(timerId);
@@ -292,18 +294,16 @@ function countdown() {
 
 
     //le local STorage
-    //tableau vide
-    let array = [];
+//ranger tous les points dans un tableau
+
     //stocker la valeur cpt
     window.localStorage.setItem('score', cpt);
-    //recupérer le score
-    let getScore = localStorage.getItem('score');
-    //convertit le string en nombre
-    let points = parseInt(getScore);
-    let results = array.push(points);
-    console.log(points);
-
-
+    let results = array.push(cpt);
+    //faire une loop for pour ajouter les points dans le tableau
+    for(let i = 0;i < results.length; i++) {
+      console.log('score n°', i, ' : ', cpt);
+    }
+    console.log(results);
 
 
     //c'est la fenêtre modale qui apparaît à la fin
