@@ -31,11 +31,11 @@
          el.style.animationName = "fly-from-left";
 
      }
-
  }
 
  function spawnPlanet() {
 
+  //  console.log("spawning");
 
      // VISIBILITE BON / MAUVAIS
      const elemType = Math.floor(Math.random() * 2); //tirage aléatoire d'un nombre entre 0 et 2 (car 2 éléments 1 bon et 1 mauvais)
@@ -65,13 +65,12 @@
 
  };
 
- let planetTimer = setInterval(spawnPlanet, 2000);
+ var planetTimer = setInterval(spawnPlanet, 1000);
  document.addEventListener("DOMContentLoaded", spawnPlanet());
 
  function spawnBonus() {
 
      const margin = 20;
-
      const elemType = Math.floor(Math.random() * 2);
 
      let newBonus = document.createElement("img");
@@ -153,33 +152,40 @@
      let baclette = document.getElementById("baclette");
  }
 
- let planetTimer2, planetTimer3, planetTimer4;
+ //TODO multiple levels
+ /*function level() {
 
- function level() {
-   if (cpt >= 40 && planetTimer3) {
-      clearInterval(planetTimer3);
-      delete planetTimer3;
-      planetTimer4 = setInterval(spawnPlanet, 500);
-   } else if (cpt >= 20 && planetTimer2) {
-      clearInterval(planetTimer2);
-      delete planetTimer2;
-      planetTimer3 = setInterval(spawnPlanet, 700);
-   } else if (cpt >= 5 && planetTimer) {
+   if(!planetTimer) return;
+
+   //planetTimer exists... go ahead
+   if (cpt >= 40) {
      clearInterval(planetTimer);
-     delete planetTimer;
-     planetTimer2 = setInterval(spawnPlanet, 1000);
-  }
+    //  delete planetTimer;
+     planetTimer = setInterval(spawnPlanet, 500);
+     console.log(1,planetTimer);
+   } else if (cpt >= 20) {
+     clearInterval(planetTimer);
+    //  delete planetTimer;
+     planetTimer = setInterval(spawnPlanet, 700);
+     console.log(2,planetTimer);
+   } else if (cpt >= 5) {
+     clearInterval(planetTimer);
+    //  delete planetTimer;
+     planetTimer = setInterval(spawnPlanet, 1000);
+     console.log(3,planetTimer);
+   }
+
  }
+level();*/
 
  //Fenetre score final + chrono
  function countdown() {
-   level()
-     //si le temps qui reste est inférieur à zéro
+     //si le temps est �coul�
      if (timeLeft < 0) {
-         //clearTimeout suspend le timer,le bonus et les planètes
-         clearTimeout(timerId);
+         //clearInterval suspend le timer,le bonus et les planètes
+         clearInterval(timerId);
          clearInterval(planetTimer);
-         clearTimeout(bonusTimer);
+         clearInterval(bonusTimer);
          //c'est la fenêtre modale qui apparaît à la fin
          let paragraph = document.getElementById("result");
          //si le cpt (cad les points) est inférieur à 20
@@ -219,10 +225,8 @@
      timerId = setInterval(countdown, 1000);
      spawnPlanet();
      spawnBonus();
-     planetTimer = setInterval(spawnPlanet, 0700);
+     planetTimer = setInterval(spawnPlanet, 1000);
      bonusTimer = setInterval(spawnBonus, 9000);
-
-
  });
 
  //MUSIC PLAY ON OFF
