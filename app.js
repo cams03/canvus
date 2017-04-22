@@ -302,7 +302,9 @@ function countdown() {
     }
     console.log(array);
 
-
+/*Math.max => prendre le plus grand nombre dans le tableau
+.apply => pour l'appliquer dans un tableau sans répéter toutes les valeurs en détail du tableau array
+(null, array) => Si au moins un des arguments ne peut pas être converti en un nombre, le résultat sera NaN donc le null(représente la nullité au sens où aucune valeur pour l'objet n'est présente).*/
     //c'est la fenêtre modale qui apparaît à la fin
     let paragraph = document.getElementById("result");
     //si le cpt (cad les points) est inférieur à 20
