@@ -307,11 +307,11 @@ function countdown() {
     let paragraph = document.getElementById("result");
     //si le cpt (cad les points) est inférieur à 20
     if (cpt < 20) {
-      paragraph.innerHTML = "Ton score est de : " + cpt + ". La honte sur toi Maurice !!";
+      paragraph.innerHTML = "Ton score est de : " + cpt + ". La honte sur toi Maurice !!" + "Le meilleur score est de " + "Le meilleur score est de " + Math.max.apply(null, array) + " .";
     } else if (cpt < 80) {
-      paragraph.innerHTML = "Mouais ton score est de : " + cpt + ". Tu peux faire mieux mon vieux !";
+      paragraph.innerHTML = "Mouais ton score est de : " + cpt + ". Tu peux faire mieux mon vieux !" + "Le meilleur score est de " + Math.max.apply(null, array) + " .";
     } else {
-      paragraph.innerHTML = "T'es un killer !";
+      paragraph.innerHTML = "T'es un killer !" + " Ton score est de " + cpt + ". Le meilleur score est de " + Math.max.apply(null, array) + " .";
     }
     //va sur le h1 pour introduire une phrase selon les points reçus
     document.querySelector("h1").appendChild(paragraph);
