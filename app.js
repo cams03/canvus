@@ -293,17 +293,14 @@ function countdown() {
 
 
 
-    //le local STorage
 //ranger tous les points dans un tableau
-
     //stocker la valeur cpt
-    window.localStorage.setItem('score', cpt);
     let results = array.push(cpt);
     //faire une loop for pour ajouter les points dans le tableau
     for(let i = 0;i < results.length; i++) {
       console.log('score n°', i, ' : ', cpt);
     }
-    console.log(results);
+    console.log(array);
 
 
     //c'est la fenêtre modale qui apparaît à la fin
