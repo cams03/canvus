@@ -65,9 +65,8 @@
 
  };
 
- var planetTimer = setInterval(spawnPlanet, 1000);
- document.addEventListener("DOMContentLoaded", spawnPlanet());
-
+ let planetTimer;
+ 
  function spawnBonus() {
 
      const margin = 20;
@@ -99,10 +98,9 @@
      });
  };
 
- let bonusTimer = setInterval(spawnBonus, 9000);
- document.addEventListener("DOMContentLoaded", spawnBonus());
-
-//CURSEUR
+ let bonusTimer;
+ 
+ //CURSEUR
 
  window.addEventListener("mousemove", function(evenementmousemove) {
      document.getElementById("cursorperso").style.top = evenementmousemove.clientY - 50 + 'px';
@@ -197,7 +195,8 @@ level();*/
              paragraph.innerHTML = "Ton score est de : " + cpt + ". T'es un killer !!";
          }
          //va sur le h1 pour introduire une phrase selon les points reçus
-         document.querySelector("h1").appendChild(paragraph);
+         let gameOver = document.getElementById("over");
+         gameOver.appendChild(paragraph);
          //classList pour l'ajouter dans les id cover et score
          cover.classList.add("visible");
          popup.classList.add("visible");
@@ -212,22 +211,55 @@ level();*/
  };
 
  //cr�ation d'une variable pour mettre une intervalle réguliere de chaque seconde
- let timerId = setInterval(countdown, 1000);
- //création d'un add Event Listener pour le compteur
- document.addEventListener("DOMContentLoaded", countdown());
+ let timerId;
+ 
  //add event listener pour rejouer et recommencer à zéro
  rejouer.addEventListener("click", function() {
      cover.classList.remove("visible");
      popup.classList.remove("visible");
      cpt = 0;
      timeLeft = 30;
-     countdown();
-     timerId = setInterval(countdown, 1000);
-     spawnPlanet();
-     spawnBonus();
-     planetTimer = setInterval(spawnPlanet, 1000);
-     bonusTimer = setInterval(spawnBonus, 9000);
+     cover2.classList.add("visible");
+     levels.classList.add("visible");
+     
  });
+
+let easy = document.getElementById("easy");
+let medium = document.getElementById("medium");
+let hard = document.getElementById("hard");
+let cover2 =document.getElementById("cover2");
+let levels = document.getElementById("levels");
+
+document.addEventListener("DOMContentLoaded", function() {
+    cover2.classList.add("visible");
+    levels.classList.add("visible");
+
+})
+
+easy.addEventListener("click", function(){
+    cover2.classList.remove("visible");
+    levels.classList.remove("visible");
+    timerId = setInterval(countdown, 1000);
+    planetTimer=setInterval(spawnPlanet, 1000);
+    bonusTimer=setInterval(spawnBonus, 9000);
+})
+
+medium.addEventListener("click", function(){
+    cover2.classList.remove("visible");
+    levels.classList.remove("visible");
+    timerId = setInterval(countdown, 1000);
+    planetTimer=setInterval(spawnPlanet, 700);
+    bonusTimer=setInterval(spawnBonus, 9000);
+})
+
+hard.addEventListener("click", function(){
+    cover2.classList.remove("visible");
+    levels.classList.remove("visible");
+    timerId = setInterval(countdown, 1000);
+    planetTimer=setInterval(spawnPlanet, 500);
+    bonusTimer=setInterval(spawnBonus, 9000);
+})
+ 
 
  //MUSIC PLAY ON OFF
 

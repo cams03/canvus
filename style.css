@@ -71,7 +71,7 @@
          z-index: 200000;
      }
 
-     #score {
+     #score, #levels {
          padding: 2px;
          width: 100%;
          margin: auto;
@@ -79,7 +79,7 @@
          text-align: center;
      }
 
-     #score h1 {
+     #score h1, #levels h1 {
          font-family: space, sans-serif;
          font-size: 65px;
          color: #9b158b;
@@ -92,12 +92,12 @@
          margin: 10px;
      }
 
-     #cover.visible {
+     #cover.visible, #cover2.visible {
          display: flex;
          margin: auto;
      }
 
-     #score.visible {
+     #score.visible, #levels.visible {
          display: block;
      }
 
