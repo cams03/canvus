@@ -60,6 +60,7 @@
      }
      /*FENETRE POPUP SCORE FINAL*/
 
+
      #cover, #cover2 {
          display: none;
          justify-content: center;
@@ -71,7 +72,9 @@
          z-index: 200000;
      }
 
+
      #score, #levels {
+        neji-keyframe
          padding: 2px;
          width: 100%;
          margin: auto;
@@ -79,7 +82,9 @@
          text-align: center;
      }
 
+
      #score h1, #levels h1 {
+
          font-family: space, sans-serif;
          font-size: 65px;
          color: #9b158b;
@@ -92,10 +97,13 @@
          margin: 10px;
      }
 
+
      #cover.visible, #cover2.visible {
+
          display: flex;
          margin: auto;
      }
+
 
      #score.visible, #levels.visible {
          display: block;
@@ -161,15 +169,47 @@
      .fly {
          position: absolute;
          animation-duration: 1.5s;
-         animation-timing-function: ease-in-out;
+         animation-timing-function: linear;;
          z-index: 12;
      }
 
      @keyframes fly-from-top {
+
+        from {
+        left: 0;
+        top: 0;
+        }
+
          0% {
              top: 0;
              transform: rotate(360deg);
          }
+
+         15% {
+        left: 400px;/*50*/
+        top: -100px;/*-50*/
+        }
+
+        30% {
+        left: 100px;
+        top: 0;
+        }
+
+        45% {
+        left: 250px;/*150*/
+        top: -10px;/*-50*/
+        }
+
+        60% {
+        left: 200px;/*200*/
+        top: 0;/*0*/
+        }
+
+        75% {
+        left: 250px;
+        top: -50px;
+    }
+
          100% {
              top: 100%;
          }
