@@ -92,7 +92,7 @@ function spawnPlanet() {
   newBonus.addEventListener('animationend', function() {
     this.parentNode.removeChild(this);
   });
-})
+}
 
  let bonusTimer;
 
