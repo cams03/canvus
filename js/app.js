@@ -114,12 +114,11 @@ function mouseOver(el) {
 
  let cpt = 0;
  let timeLeft = 30;
- let highscore = 0;//my highscore
  let timer = document.getElementById("timer");
  let popup = document.getElementById("score");
  let cover = document.getElementById("cover");
  let rejouer = document.getElementById("rejouer");
- let array = []; //var vide
+ let array = []; //var vide pour les scores
  let timerId;
  let planetTimer;
  let bonusTimer;
@@ -138,10 +137,6 @@ function mouseOver(el) {
          clearInterval(bonusTimer);
          //ranger tous les points dans un tableau et stocker la valeur cpt
          let results = array.push(cpt);
-         for(let i = 0;i < results.length; i++) { //faire une loop for pour ajouter les points dans le tableau
-               console.log('score n°', i, ' : ', cpt);
-          }
-          console.log(array);
          /*Math.max => prendre le plus grand nombre dans le tableau
          .apply => pour l'appliquer dans un tableau sans répéter toutes les valeurs en détail du tableau array
          (null, array) => Si au moins un des arguments ne peut pas être converti en un nombre, le résultat sera NaN donc le null(représente la nullité au sens où aucune valeur pour l'objet n'est présente).*/
@@ -157,13 +152,13 @@ function mouseOver(el) {
          gameOver.appendChild(paragraph); // rattache le paragraphe "result" au h1 "over"
          cover.classList.add("visible"); // affiche la fenêtre pop up
          popup.classList.add("visible"); // affiche la fenêtre pop up
-         localStorage.setItem('highscore', cpt); //dans le localStorage, les points sera enregistrer
 
      } else {
          timer.innerHTML = timeLeft;//sinon continue à afficher le temps qui reste
          timeLeft--;
     }
  };
+ console.log(array);
 
 // CHOIX DU NIVEAU
  document.addEventListener("DOMContentLoaded", function() {
