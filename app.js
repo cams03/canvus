@@ -31,11 +31,11 @@
          el.style.animationName = "fly-from-left";
 
      }
-
  }
 
  function spawnPlanet() {
 
+  //  console.log("spawning");
 
      // VISIBILITE BON / MAUVAIS
      const elemType = Math.floor(Math.random() * 2); //tirage aléatoire d'un nombre entre 0 et 2 (car 2 éléments 1 bon et 1 mauvais)
@@ -62,15 +62,14 @@
      newPlanet.addEventListener('animationend', function() {
          this.parentNode.removeChild(this);
      });
+
  };
 
- let planetTimer = setInterval(spawnPlanet, 0700);
- document.addEventListener("DOMContentLoaded", spawnPlanet());
-
+ let planetTimer;
+ 
  function spawnBonus() {
 
      const margin = 20;
-
      const elemType = Math.floor(Math.random() * 2);
 
      let newBonus = document.createElement("img");
@@ -92,7 +91,6 @@
 
      document.getElementById('main').appendChild(newBonus);
 
-
      direction(newBonus);
 
      newBonus.addEventListener('animationend', function() {
@@ -100,153 +98,14 @@
      });
  };
 
- let bonusTimer = setInterval(spawnBonus, 9000);
- document.addEventListener("DOMContentLoaded", spawnBonus());
+ let bonusTimer;
+ 
+ //CURSEUR
 
- // TRAINEE
  window.addEventListener("mousemove", function(evenementmousemove) {
      document.getElementById("cursorperso").style.top = evenementmousemove.clientY - 50 + 'px';
      document.getElementById("cursorperso").style.left = evenementmousemove.clientX - 50 + 'px';
  });
-
- (function batCursor() {
-
-     var width = window.innerWidth;
-     var height = window.innerHeight;
-     var cursor = {
-         x: width / 2,
-         y: width / 2
-     };
-
-     function init() {
-         bindEvents();
-
-         loop();
-     }
-
-     function bindEvents() {
-         document.addEventListener('mousemove', onMouseMove);
-         window.addEventListener('resize', onWindowResize);
-     }
-
-     function onWindowResize(e) {
-         width = window.innerWidth;
-         height = window.innerHeight;
-     }
-
-     function onTouchMove(e) {
-         if (e.touches.length > 0) {
-             for (var i = 0; i < e.touches.length; i++) {
-                 //addParticle(e.touches[i].clientX, e.touches[i].clientY);
-             }
-         }
-     }
-
-     function onMouseMove(e) {
-         cursor.x = e.clientX;
-         cursor.y = e.clientY;
-
-         //addParticle(cursor.x, cursor.y);
-     }
-
-     /*function addParticle(x, y) {
-         var particle = new Particle();
-         particle.init(x, y);
-         particles.push(particle);
-     }*/
-
-     /*function updateParticles() {
-         for (var i = 0; i < particles.length; i++) {
-             particles[i].update();
-         }
-
-         for (var i = particles.length - 1; i >= 0; i--) {
-             if (particles[i].lifeSpan < 0) {
-                 particles[i].die();
-                 particles.splice(i, 1);
-             }
-         }
-
-     }*/
-
-     function loop() {
-         requestAnimationFrame(loop);
-
-     }
-
-     /*function Particle() {
-
-         this.lifeSpan = 200;
-
-         this.init = function (x, y) {
-
-             this.velocity = {
-                 x: (Math.random() < 0.5 ? -1 : 1) * (Math.random() * 2),
-                 y: (-2.5 + (Math.random() * -1))
-             };
-
-             this.position = {
-                 x: x - 1,
-                 y: y - 1
-             };
-
-             this.element = document.createElement('span');
-             this.element.className = "particle-santa"
-             this.update();
-
-             document.body.appendChild(this.element);
-         };
-
-         this.update = function () {
-             this.position.x += this.velocity.x;
-             this.position.y += this.velocity.y;
-
-             this.velocity.x += (Math.random() < 0.5 ? -1 : 1) * 2 / 75;
-             this.velocity.y -= Math.random() / 600;
-             this.lifeSpan--;
-
-             this.element.style.transform = "translate3d(" + this.position.x + "px," + this.position.y + "px,0) scale(" + (0.2 + (250 - this.lifeSpan) / 250) + ")";
-         }
-
-         this.die = function () {
-             this.element.parentNode.removeChild(this.element);
-         }
-     }
-
-     function attachInitialParticleStyles() {
-
-         var initialStyles = [
-            ".particle-santa {",
-            "position: absolute;",
-            "display: block;",
-            "pointer-events: none;",
-            "z-index: 10000000;",
-            "width: 20px;",
-            "height: 20px;",
-            "background-size: contain;",
-            "background-image: url(pics/santa.png);",
-           "}"].join('');
-
-         var style = document.createElement('style')
-         style.type = 'text/css'
-         style.innerHTML = initialStyles;
-         document.getElementsByTagName('head')[0].appendChild(style)
-     };*/
-
-     init();
- })();
-
- // mouseOver allez salut !
-
- let cpt = 0;
- let timeLeft = 30;
- //my highscore
- let highscore = 0;
- let timer = document.getElementById("timer");
- let popup = document.getElementById("score");
- let cover = document.getElementById("cover");
- let rejouer = document.getElementById("rejouer");
-
 
  function mouseOver(el) {
      if (el.classList.contains("goodplanet")) {
@@ -272,28 +131,59 @@
          } else {
              el.style.display = "none";
              document.getElementById("baclette").innerHTML = "Score : 0";
-
          }
      }
  }
 
- // compteur de points
+ let cpt = 0;
+ let timeLeft = 30;
+ //my highscore
+ let highscore = 0;
+ let timer = document.getElementById("timer");
+ let popup = document.getElementById("score");
+ let cover = document.getElementById("cover");
+ let rejouer = document.getElementById("rejouer");
 
+ // compteur de points
  function compteur() {
      //span où le score est affiché
      let baclette = document.getElementById("baclette");
  }
 
+ //TODO multiple levels
+ /*function level() {
+
+   if(!planetTimer) return;
+
+   //planetTimer exists... go ahead
+   if (cpt >= 40) {
+     clearInterval(planetTimer);
+    //  delete planetTimer;
+     planetTimer = setInterval(spawnPlanet, 500);
+     console.log(1,planetTimer);
+   } else if (cpt >= 20) {
+     clearInterval(planetTimer);
+    //  delete planetTimer;
+     planetTimer = setInterval(spawnPlanet, 700);
+     console.log(2,planetTimer);
+   } else if (cpt >= 5) {
+     clearInterval(planetTimer);
+    //  delete planetTimer;
+     planetTimer = setInterval(spawnPlanet, 1000);
+     console.log(3,planetTimer);
+   }
+
+ }
+level();*/
+
  //Fenetre score final + chrono
-
-
  function countdown() {
-     //si le temps qui reste est inférieur à zéro
+     //si le temps est �coul�
      if (timeLeft < 0) {
-         //clearTimeout suspend le timer,le bonus et les planètes
-         clearTimeout(timerId);
-         clearTimeout(planetTimer);
-         clearTimeout(bonusTimer);
+         //clearInterval suspend le timer,le bonus et les planètes
+         clearInterval(timerId);
+         clearInterval(planetTimer);
+         clearInterval(bonusTimer);
          //c'est la fenêtre modale qui apparaît à la fin
          let paragraph = document.getElementById("result");
          //si le cpt (cad les points) est inférieur à 20
@@ -305,7 +195,8 @@
              paragraph.innerHTML = "Ton score est de : " + cpt + ". T'es un killer !!";
          }
          //va sur le h1 pour introduire une phrase selon les points reçus
-         document.querySelector("h1").appendChild(paragraph);
+         let gameOver = document.getElementById("over");
+         gameOver.appendChild(paragraph);
          //classList pour l'ajouter dans les id cover et score
          cover.classList.add("visible");
          popup.classList.add("visible");
@@ -316,28 +207,59 @@
          //sinon continue à afficher le temps qui reste
          timer.innerHTML = timeLeft;
          timeLeft--;
-     }
+    }
  };
- //création d'une variable pour mettre une intervalle réguliere de chaque seconde
- let timerId = setInterval(countdown, 1000);
- //création d'un add Event Listener pour le compteur
- document.addEventListener("DOMContentLoaded", countdown());
+
+ //cr�ation d'une variable pour mettre une intervalle réguliere de chaque seconde
+ let timerId;
+ 
  //add event listener pour rejouer et recommencer à zéro
  rejouer.addEventListener("click", function() {
      cover.classList.remove("visible");
      popup.classList.remove("visible");
      cpt = 0;
      timeLeft = 30;
-     countdown();
-     timerId = setInterval(countdown, 1000);
-     spawnPlanet();
-     spawnBonus();
-     planetTimer = setInterval(spawnPlanet, 0700);
-     bonusTimer = setInterval(spawnBonus, 9000);
-
-
+     cover2.classList.add("visible");
+     levels.classList.add("visible");
+     
  });
 
+let easy = document.getElementById("easy");
+let medium = document.getElementById("medium");
+let hard = document.getElementById("hard");
+let cover2 =document.getElementById("cover2");
+let levels = document.getElementById("levels");
+
+document.addEventListener("DOMContentLoaded", function() {
+    cover2.classList.add("visible");
+    levels.classList.add("visible");
+
+})
+
+easy.addEventListener("click", function(){
+    cover2.classList.remove("visible");
+    levels.classList.remove("visible");
+    timerId = setInterval(countdown, 1000);
+    planetTimer=setInterval(spawnPlanet, 1000);
+    bonusTimer=setInterval(spawnBonus, 9000);
+})
+
+medium.addEventListener("click", function(){
+    cover2.classList.remove("visible");
+    levels.classList.remove("visible");
+    timerId = setInterval(countdown, 1000);
+    planetTimer=setInterval(spawnPlanet, 700);
+    bonusTimer=setInterval(spawnBonus, 9000);
+})
+
+hard.addEventListener("click", function(){
+    cover2.classList.remove("visible");
+    levels.classList.remove("visible");
+    timerId = setInterval(countdown, 1000);
+    planetTimer=setInterval(spawnPlanet, 500);
+    bonusTimer=setInterval(spawnBonus, 9000);
+})
+ 
 
  //MUSIC PLAY ON OFF
 
