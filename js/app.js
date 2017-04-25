@@ -170,7 +170,6 @@ function mouseOver(el) {
  })
 
  easy.addEventListener("click", function(){
-     document.getElementById("baclette").innerHTML = "Score : 0";
      cover2.classList.remove("visible");
      levels.classList.remove("visible");
      timerId = setInterval(countdown, 1000);
@@ -180,7 +179,6 @@ function mouseOver(el) {
  })
 
  medium.addEventListener("click", function(){
-    document.getElementById("baclette").innerHTML = "Score : 0";
      cover2.classList.remove("visible");
      levels.classList.remove("visible");
      timerId = setInterval(countdown, 1000);
@@ -190,7 +188,6 @@ function mouseOver(el) {
  })
 
  hard.addEventListener("click", function(){
-    document.getElementById("baclette").innerHTML = "Score : 0";
      cover2.classList.remove("visible");
      levels.classList.remove("visible");
      timerId = setInterval(countdown, 1000);
@@ -206,6 +203,7 @@ rejouer.addEventListener("click", function() { //add event listener pour rejouer
      timeLeft = 30;
      cover2.classList.add("visible");
      levels.classList.add("visible");
+     document.getElementById("baclette").innerHTML = "Score : 0";
 });
 
  //MUSIC PLAY ON OFF
