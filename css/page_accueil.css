@@ -24,7 +24,6 @@
         #play,
     #rules,
     #team {
-        width: 15%;
         height: 100%;
         color: aliceblue;
         font-size: 27px;
@@ -48,6 +47,8 @@
     }
     #rules_p.visible {
         display: block;
+        width: 80%;
+        margin: auto;
     }
     #rules_p p {
         color: white;

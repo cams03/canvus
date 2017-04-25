@@ -170,27 +170,33 @@ function mouseOver(el) {
  })
 
  easy.addEventListener("click", function(){
+   cpt = 0;
      cover2.classList.remove("visible");
      levels.classList.remove("visible");
      timerId = setInterval(countdown, 1000);
      planetTimer=setInterval(spawnPlanet, 1000);
      bonusTimer=setInterval(spawnBonus, 9000);
+     countdown();
  })
 
  medium.addEventListener("click", function(){
+   cpt = 0;
      cover2.classList.remove("visible");
      levels.classList.remove("visible");
      timerId = setInterval(countdown, 1000);
      planetTimer=setInterval(spawnPlanet, 700);
      bonusTimer=setInterval(spawnBonus, 9000);
+     countdown();
  })
 
  hard.addEventListener("click", function(){
+   cpt = 0;
      cover2.classList.remove("visible");
      levels.classList.remove("visible");
      timerId = setInterval(countdown, 1000);
      planetTimer=setInterval(spawnPlanet, 500);
      bonusTimer=setInterval(spawnBonus, 9000);
+     countdown();
  })
 
 rejouer.addEventListener("click", function() { //add event listener pour rejouer et recommencer à zéro
