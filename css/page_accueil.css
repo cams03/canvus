@@ -1,18 +1,18 @@
 @font-face {
-    font-family: space;
-    src: url(space.ttf);
-}
+        font-family: space;
+        src: url("../fonts/space.ttf");
+    }
 @font-face {
-    font-family: "zekton";
-    src: url(zekton.ttf);
-}
+        font-family: "zekton";
+        src: url("../fonts/zekton.ttf");
+    }
 
-body {
-    margin: 0;
-    background-image: url("pics/couv1.jpg");
-    background-size: cover;
-    font-family: space, sans-serif;
-}
+    body {
+        margin: 0;
+        background-image: url("../pics/couv4.jpg");
+        background-size: cover;
+        font-family: space, sans-serif;
+    }
 
 .container {
     display: flex;
