@@ -141,14 +141,17 @@ function mouseOver(el) {
          .apply => pour l'appliquer dans un tableau sans répéter toutes les valeurs en détail du tableau array
          (null, array) => Si au moins un des arguments ne peut pas être converti en un nombre, le résultat sera NaN donc le null(représente la nullité au sens où aucune valeur pour l'objet n'est présente).*/
          let paragraph = document.getElementById("result");//paragraphe qui affiche le résultat à la fin
+         let highScore = document.getElementById("high_score");//paragraphe qui affiche le high score à la fin
          if (cpt < 20) {//si le cpt (cad les points) est inférieur à 20
-              paragraph.innerHTML = "Ton score est de : " + cpt + ". La honte sur toi Maurice !!" + " Highscore :" + Math.max.apply(null, array) + " .";
+              paragraph.innerHTML = "Ton score est de : " + cpt + ". La honte sur toi Maurice !!";
+              highScore.innerHTML = "Highscore :" + Math.max.apply(null, array);
          } else if (cpt < 80) {
               paragraph.innerHTML = "Mouais ton score est de : " + cpt + ". Tu peux faire mieux mon vieux !" + "High score: " + Math.max.apply(null, array) + " .";
          } else {
               paragraph.innerHTML = "T'es un killer !" + " Ton score est de " + cpt + ". High score : " + Math.max.apply(null, array) + " .";
          }
          let gameOver = document.getElementById("over");
+         gameOver.appendChild(highScore); // rattache le paragraphe "high score" au h1 "over"
          gameOver.appendChild(paragraph); // rattache le paragraphe "result" au h1 "over"
          cover.classList.add("visible"); // affiche la fenêtre pop up
          popup.classList.add("visible"); // affiche la fenêtre pop up
@@ -173,6 +176,7 @@ function mouseOver(el) {
      planetTimer=setInterval(spawnPlanet, 1000);
      bonusTimer=setInterval(spawnBonus, 9000);
  })
+
  medium.addEventListener("click", function(){
      cover2.classList.remove("visible");
      levels.classList.remove("visible");
@@ -180,6 +184,7 @@ function mouseOver(el) {
      planetTimer=setInterval(spawnPlanet, 700);
      bonusTimer=setInterval(spawnBonus, 9000);
  })
+
  hard.addEventListener("click", function(){
      cover2.classList.remove("visible");
      levels.classList.remove("visible");
