@@ -53,6 +53,23 @@
         color: white;
         font-size: 20px;
     }
+    #container_avatar {
+      width: 90%;
+      margin: auto;
+      display: flex;
+      justify-content: space-around;
+    }
+    #container_avatar img {
+      width: 200px;
+      height: 130px;
+    }
+    #container_avatar div {
+      display: flex;
+      flex-direction: column;
+    }
+    #container_avatar div p {
+        text-align: center;
+    }
     .container {
         display: flex;
         flex-direction: column;
@@ -78,8 +95,6 @@
     font-family: "zekton";
     color: aliceblue;
 }
-
-
 footer {
     width: 100%;
     position: absolute;
