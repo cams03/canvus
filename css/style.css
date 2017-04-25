@@ -97,7 +97,6 @@ body {
        z-index: 200000;
 }
 #score, #levels {
-      neji-keyframe
        padding: 2px;
        width: 100%;
        margin: auto;
@@ -114,6 +113,11 @@ body {
        font-size: 40px;
        color: aliceblue;
        margin: 10px;
+}
+#score #high_score {
+      font-family: space, sans-serif;
+      font-size: 45px;
+      color: cornflowerblue;
 }
 #cover.visible, #cover2.visible {
        display: flex;
@@ -144,40 +148,33 @@ button:hover {
 }
 /*-------------------------------------------------*/
 
-@keyframes fly-from-top {
-      from {
-        left: 0;
-        top: 0;
-      }
-     0% {
-       top: 0;
-       transform: rotate(360deg);
-     }
-     15% {
-       left: 400px;/*50*/
-       top: -100px;/*-50*/
-    }
-    30% {
-        left: 100px;
-        top: 0;
-    }
-    45% {
-        left: 250px;/*150*/
-        top: -10px;/*-50*/
-    }
-    60% {
-        left: 200px;/*200*/
-        top: 0;/*0*/
-    }
-    75% {
-        left: 250px;
-        top: -50px;
-    }
-    100% {
-       top: 100%;
-    }
-  }
+  @keyframes fly-from-top {
 
+       0% {
+         top: 0;
+         transform: rotate(360deg);
+       }
+       15% {
+         left: 400px;/*50*/
+         top: -100px;/*-50*/
+      }
+
+      45% {
+          left: 250px;/*150*/
+          top: -10px;/*-50*/
+      }
+      60% {
+          left: 200px;/*200*/
+          top: 0;/*0*/
+      }
+      75% {
+          left: 250px;
+          top: -50px;
+      }
+      100% {
+         top: 100%;
+      }
+    }
  @keyframes fly-from-right {
     0% {
         right: 0;
