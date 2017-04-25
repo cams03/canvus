@@ -144,7 +144,7 @@ function mouseOver(el) {
          let highScore = document.getElementById("high_score");//paragraphe qui affiche le high score à la fin
          if (cpt < 20) {//si le cpt (cad les points) est inférieur à 20
               paragraph.innerHTML = "Ton score est de : " + cpt + ". La honte sur toi Maurice !!";
-              highScore.innerHTML = "Highscore :" + Math.max.apply(null, array);
+              highScore.innerHTML = "Highscore : " + Math.max.apply(null, array);
          } else if (cpt < 80) {
               paragraph.innerHTML = "Mouais ton score est de : " + cpt + ". Tu peux faire mieux mon vieux !" + "High score: " + Math.max.apply(null, array) + " .";
          } else {
@@ -170,7 +170,7 @@ function mouseOver(el) {
  })
 
  easy.addEventListener("click", function(){
-   cpt = 0;
+     document.getElementById("baclette").innerHTML = "Score : 0";
      cover2.classList.remove("visible");
      levels.classList.remove("visible");
      timerId = setInterval(countdown, 1000);
@@ -180,7 +180,7 @@ function mouseOver(el) {
  })
 
  medium.addEventListener("click", function(){
-   cpt = 0;
+    document.getElementById("baclette").innerHTML = "Score : 0";
      cover2.classList.remove("visible");
      levels.classList.remove("visible");
      timerId = setInterval(countdown, 1000);
@@ -190,11 +190,11 @@ function mouseOver(el) {
  })
 
  hard.addEventListener("click", function(){
-   cpt = 0;
+    document.getElementById("baclette").innerHTML = "Score : 0";
      cover2.classList.remove("visible");
      levels.classList.remove("visible");
      timerId = setInterval(countdown, 1000);
-     planetTimer=setInterval(spawnPlanet, 500);
+     planetTimer=setInterval(spawnPlanet, 400);
      bonusTimer=setInterval(spawnBonus, 9000);
      countdown();
  })
