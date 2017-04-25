@@ -107,12 +107,12 @@ body {
 #score h1, #levels h1 {
        font-family: space, sans-serif;
        font-size: 65px;
-       color: #9b158b;
+       color: cornflowerblue;
 }
 #score p {
        font-family: "zekton", sans-serif;
        font-size: 40px;
-       color: #9b158b;
+       color: aliceblue;
        margin: 10px;
 }
 #cover.visible, #cover2.visible {
@@ -125,7 +125,7 @@ body {
 button {
        font-family: space, sans-serif;
        font-size: 20px;
-       color: #9b158b;
+       color: cornflowerblue;
        padding: 5px;
        background-color: orange;
        box-shadow: 0px 0px 10px;
@@ -134,7 +134,7 @@ button {
        margin: 10px;
 }
 button a {
-       color: #9b158b;
+       color: cornflowerblue;
        text-decoration: none;
 }
 button:hover {
