@@ -1,4 +1,4 @@
- const margin = 20;
+const margin = 20;
 
  function direction(el) {
 
