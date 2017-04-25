@@ -13,7 +13,7 @@
         font-family: space, sans-serif;
     }
     h1,
-    .accroche {
+    .accroche, .accroche_team {
         width: 100%;
         color: cornflowerblue;
         text-align: center;
@@ -55,7 +55,7 @@
     }
     #container_avatar {
       width: 90%;
-      margin: auto;
+      margin: 5% auto 0 auto;
       display: flex;
       justify-content: space-around;
     }
@@ -63,14 +63,21 @@
       width: 200px;
       height: 130px;
     }
+    #container_avatar img:hover {
+      transform: scale(1.1);
+    }
     #container_avatar div {
       display: flex;
       flex-direction: column;
     }
     #container_avatar div p {
         text-align: center;
+        color: white;
+        font-size: 18px;
+        font-family: "zekton";
+        font-weight: bold;
     }
-    .container {
+    .container, .container_team {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -78,8 +85,20 @@
         margin: 0 auto;
         height: 500px;
     }
-    .accroche {
+    .container_team .credits {
+        width: 70%;
+        margin: auto;
+        text-align: center;
+        font-family: "zekton";
+        color: white;
+        position: absolute;
+        bottom: 20%;
+    }
+    .accroche, .accroche_team {
         font-size: 40px;
+    }
+    .accroche_team {
+      margin-top: 0;
     }
     .inside_container {
         width: 70%;
