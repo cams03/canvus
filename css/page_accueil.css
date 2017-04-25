@@ -92,7 +92,9 @@
         font-family: "zekton";
         color: white;
         position: absolute;
-        bottom: 20%;
+        bottom: 15%;
+        left: 15%;
+        color: aliceblue;
     }
     .accroche, .accroche_team {
         font-size: 40px;
