@@ -48,7 +48,7 @@ body {
        font-family: space, sans-serif;
        z-index: 200000;
 }
-#mute,#sound, #pause, #play {
+#mute,#sound, #pause, #play, #home {
        position: absolute;
        width: 50px;
        bottom: 2%;
@@ -59,8 +59,11 @@ body {
 #pause, #play {
       right: 35%;
 }
+#home {
+  right: 25%;
+}
 #mute.visible,
-#sound.visible, #play.visible, #pause.visible {
+#sound.visible, #play.visible, #pause.visible, #home.visible {
        display: block;
 }
 #mute:hover,
