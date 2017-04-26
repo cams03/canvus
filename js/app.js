@@ -146,9 +146,11 @@ function mouseOver(el) {
               paragraph.innerHTML = "Ton score est de : " + cpt + ". La honte sur toi Maurice !!";
               highScore.innerHTML = "Highscore : " + Math.max.apply(null, array);
          } else if (cpt < 80) {
-              paragraph.innerHTML = "Mouais ton score est de : " + cpt + ". Tu peux faire mieux mon vieux !" + "High score: " + Math.max.apply(null, array) + " .";
+              paragraph.innerHTML = "Mouais ton score est de : " + cpt + ". Tu peux faire mieux mon vieux !";
+              highScore.innerHTML = "High score : " + Math.max.apply(null, array);
          } else {
-              paragraph.innerHTML = "T'es un killer !" + " Ton score est de " + cpt + ". High score : " + Math.max.apply(null, array) + " .";
+              paragraph.innerHTML = "T'es un killer !" + " Ton score est de " + cpt;
+              highScore.innerHTML = "High score : " + Math.max.apply(null, array);
          }
          let gameOver = document.getElementById("over");
          gameOver.appendChild(highScore); // rattache le paragraphe "high score" au h1 "over"
