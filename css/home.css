@@ -161,12 +161,11 @@
         .title {font-size: 60px;}
         .accroche_team {font-size: 30px;}
     }
-
     @media screen and (max-width: 600px) {
         .container, .inside_container {width: auto;}
         h1, .title {font-size: 50px;}
         .accroche {font-size: 30px;}
-        #play,#rules {font-size: 18px;}
+        #play, #rules {font-size: 18px;}
         #play:hover,
         #rules:hover {
             -webkit-transform: scale(1.1);
