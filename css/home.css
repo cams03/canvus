@@ -148,4 +148,5 @@ footer {
     }
     #rules_p p {font-size: 18px;}
     #container_avatar {flex-wrap: wrap;}
-}   #container_avatar div {width: 50%;}
+    #container_avatar div {width: 50%;}
+}
