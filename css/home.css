@@ -135,27 +135,14 @@ footer {
 }
 
 @media screen and (max-width: 600px) {
-    .container {
-        width: auto;
-    }
-    h1 {
-        font-size: 50px;
-    }
-    .accroche {
-        font-size: 30px;
-    }
-    .inside_container {
-        width: auto;
-    }
+    .container, .inside_container {width: auto;}
+    h1, .title {font-size: 50px;}
+    .accroche {font-size: 30px;}
     #play,
-    #rules {
-        font-size: 18px;
-    }
+    #rules {font-size: 18px;}
     #play:hover,
     #rules:hover {
         transform: scale(1.1);
     }
-    #rules_p p {
-        font-size: 18px;
-    }
+    #rules_p p {font-size: 18px;}
 }
