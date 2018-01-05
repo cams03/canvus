@@ -129,6 +129,11 @@ footer {
 .footer_team {
     position: relative;
 }
+@media screen and (max-width: 1024px) {
+    .title {font-size: 60px;}
+    .accroche_team {font-size: 30px;}
+}
+
 @media screen and (max-width: 600px) {
     .container {
         width: auto;
