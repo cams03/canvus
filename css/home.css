@@ -71,6 +71,8 @@
     #container_avatar div {
       display: flex;
       flex-direction: column;
+      justify-content: center;
+    align-items: center;
     }
     #container_avatar div p {
         text-align: center;
@@ -145,4 +147,5 @@ footer {
         transform: scale(1.1);
     }
     #rules_p p {font-size: 18px;}
-}
+    #container_avatar {flex-wrap: wrap;}
+}   #container_avatar div {width: 50%;}
