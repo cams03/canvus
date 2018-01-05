@@ -14,10 +14,17 @@ body {
        margin: 0;
        overflow: hidden;
        background-color: #ededed;
+       display: -webkit-box;
+       display: -ms-flexbox;
        display: flex;
-       box-sizing: border-box;
-       justify-content: center;
-       align-items: center;
+       -webkit-box-sizing: border-box;
+               box-sizing: border-box;
+       -webkit-box-pack: center;
+           -ms-flex-pack: center;
+               justify-content: center;
+       -webkit-box-align: center;
+           -ms-flex-align: center;
+               align-items: center;
        height: 100%;
 }
 footer {
@@ -28,8 +35,12 @@ footer {
        position: absolute;
        font-family: space, sans-serif;
        z-index: 200000;
+       display: -webkit-box;
+       display: -ms-flexbox;
        display: flex;
-       justify-content: space-between;
+       -webkit-box-pack: justify;
+           -ms-flex-pack: justify;
+               justify-content: space-between;
        width: 100%;
 }
 #cursorperso {
@@ -44,7 +55,8 @@ footer {
        height: 100vh;
        background-color: #000;
        border-radius: 3px;
-       box-shadow: 1px 1px 5px 0px #656565;
+       -webkit-box-shadow: 1px 1px 5px 0px #656565;
+               box-shadow: 1px 1px 5px 0px #656565;
        position: relative;
 }
 #canvas {
@@ -53,9 +65,14 @@ footer {
 }
 #baclette {width: 700px;}
 .icons {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      justify-content: space-around;
-      align-items: center;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
       width: 30%;
 }
 #mute,#sound, #pause, #play, #home {
@@ -68,7 +85,9 @@ footer {
 }
 #mute:hover,
 #sound:hover, #pause:hover, #play:hover, #home:hover {
-       transform: scale(1.3);
+       -webkit-transform: scale(1.3);
+           -ms-transform: scale(1.3);
+               transform: scale(1.3);
        cursor: pointer;
 }
 #timer {
@@ -84,15 +103,19 @@ footer {
 }
 .fly {
        position: absolute;
-       animation-duration: 1.5s;
-       animation-timing-function: linear;;
+       -webkit-animation-duration: 1.5s;
+               animation-duration: 1.5s;
+       -webkit-animation-timing-function: linear;
+               animation-timing-function: linear;;
        z-index: 12;
 }
 
  /*FENETRE POPUP SCORE FINAL*/
 #cover, #cover2 {
        display: none;
-       justify-content: center;
+       -webkit-box-pack: center;
+           -ms-flex-pack: center;
+               justify-content: center;
        position: absolute;
        top: 5%;
        width: 60%;
@@ -124,6 +147,8 @@ footer {
       color: cornflowerblue;
 }
 #cover.visible, #cover2.visible {
+       display: -webkit-box;
+       display: -ms-flexbox;
        display: flex;
        margin: auto;
 }
@@ -135,7 +160,8 @@ button {
        font-size: 20px;
        color: cornflowerblue;
        padding: 5px;
-       box-shadow: 0px 0px 10px;
+       -webkit-box-shadow: 0px 0px 10px;
+               box-shadow: 0px 0px 10px;
        border: none;
        border-radius: 10px;
        margin: 10px;
@@ -146,17 +172,19 @@ button a {
 }
 button:hover {
        border: none;
-       box-shadow: inset 0px 0px 7px;
+       -webkit-box-shadow: inset 0px 0px 7px;
+               box-shadow: inset 0px 0px 7px;
        background-color: rgba(0, 0, 0, 0.1);
        cursor: pointer;
 }
 /*-------------------------------------------------*/
 
-  @keyframes fly-from-top {
+  @-webkit-keyframes fly-from-top {
 
        0% {
          top: 0;
-         transform: rotate(360deg);
+         -webkit-transform: rotate(360deg);
+                 transform: rotate(360deg);
        }
        15% {
          left: 400px;/*50*/
@@ -179,28 +207,90 @@ button:hover {
          top: 100%;
       }
     }
- @keyframes fly-from-right {
+
+  @keyframes fly-from-top {
+
+       0% {
+         top: 0;
+         -webkit-transform: rotate(360deg);
+                 transform: rotate(360deg);
+       }
+       15% {
+         left: 400px;/*50*/
+         top: -100px;/*-50*/
+      }
+
+      45% {
+          left: 250px;/*150*/
+          top: -10px;/*-50*/
+      }
+      60% {
+          left: 200px;/*200*/
+          top: 0;/*0*/
+      }
+      75% {
+          left: 250px;
+          top: -50px;
+      }
+      100% {
+         top: 100%;
+      }
+    }
+ @-webkit-keyframes fly-from-right {
     0% {
         right: 0;
-        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
     }
     100% {
          right: 100%;
     }
   }
-  @keyframes fly-from-bottom {
+ @keyframes fly-from-right {
+    0% {
+        right: 0;
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+    }
+    100% {
+         right: 100%;
+    }
+  }
+  @-webkit-keyframes fly-from-bottom {
      0% {
          bottom: 0;
-         transform: rotate(360deg);
+         -webkit-transform: rotate(360deg);
+                 transform: rotate(360deg);
      }
      100% {
          bottom: 100%;
      }
    }
+  @keyframes fly-from-bottom {
+     0% {
+         bottom: 0;
+         -webkit-transform: rotate(360deg);
+                 transform: rotate(360deg);
+     }
+     100% {
+         bottom: 100%;
+     }
+   }
+   @-webkit-keyframes fly-from-left {
+     0% {
+         left: 0;
+         -webkit-transform: rotate(360deg);
+                 transform: rotate(360deg);
+     }
+     100% {
+         left: 100%;
+     }
+   }
    @keyframes fly-from-left {
      0% {
          left: 0;
-         transform: rotate(360deg);
+         -webkit-transform: rotate(360deg);
+                 transform: rotate(360deg);
      }
      100% {
          left: 100%;
@@ -219,13 +309,9 @@ button:hover {
              height: 90px;
          }
          #baclette,
-         #timer {
-             font-size: 50px;
-         }
+         #timer {font-size: 50px;}
          #mute,
-         #sound {
-             right: 20%;
-         }
+         #sound {right: 20%;}
          #cover {
              top: 15%;
              width: 65%;
@@ -233,13 +319,10 @@ button:hover {
              background-color: rgba(255, 255, 255, 0.5);
              z-index: 200000;
          }
-         #score h1 {
-             font-size: 42px;
-         }
-         #score p {
-             font-size: 22px;
-         }
+         #score h1 {font-size: 42px;}
+         #score p {font-size: 22px;}
          button {
              font-size: 15px;
              color: #9b158b;
          }
+    }
