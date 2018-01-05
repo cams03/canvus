@@ -10,6 +10,7 @@
         margin: 0;
         background-image: url("../pics/couv1.jpg");
         background-size: cover;
+        background-repeat: no-repeat;
         font-family: space, sans-serif;
     }
     h1,
@@ -84,7 +85,7 @@
         justify-content: center;
         width: 100%;
         margin: 0 auto;
-        height: 500px;
+        height: 100vh;
     }
     .container_team .credits {
         width: 70%;
@@ -92,10 +93,6 @@
         text-align: center;
         font-family: "zekton";
         color: white;
-        position: absolute;
-        bottom: 10%;
-        left: 15%;
-        color: aliceblue;
     }
     .container_team .credits a {
       color: white;
@@ -129,7 +126,9 @@ footer {
     font-size: 10px;
     color: aliceblue;
 }
-
+.footer_team {
+    position: relative;
+}
 @media screen and (max-width: 600px) {
     .container {
         width: auto;
