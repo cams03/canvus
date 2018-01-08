@@ -283,7 +283,7 @@ button:hover {
                  transform: rotate(360deg);
      }
      100% {
-         left: 100%;
+         left: 95%;
      }
    }
    @keyframes fly-from-left {
@@ -318,5 +318,6 @@ button:hover {
         top: calc(40% - 200px);
       }
       #levels button {font-size: 35px; padding: 10px;}
+      #cursorperso {display: none;}
    }
    

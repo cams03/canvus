@@ -4,8 +4,8 @@ function direction(el) {
     // DEFINITION DES DIRECTIONS
     // 0:top, 1:right, 2:bottom, 3:left
     const side = Math.floor(Math.random() * 4); // tirage aléatoire d'un nombre entre 0 et 4 qui définira le point de départ
-    const fromX = Math.floor(Math.random() * (window.innerWidth - 2 * margin)) + margin; //tirage aléatoire d'un nombre entre 20 (margin) et 980 (largeur de la fenêtre - margin) afin de définir une position horizontale
-    const fromY = Math.floor(Math.random() * (window.innerHeight - 2 * margin)) + margin; //tirage aléatoire d'un nombre entre 20 (margin) et 980 (largeur de la fenêtre - margin) afin de définir une position verticale
+    const fromX = Math.floor(Math.random() * (window.innerWidth - (2 * margin))) + margin; //tirage aléatoire d'un nombre entre 20 (margin) et 980 (largeur de la fenêtre - margin) afin de définir une position horizontale
+    const fromY = Math.floor(Math.random() * (window.innerHeight - (2 * margin))) + margin; //tirage aléatoire d'un nombre entre 20 (margin) et 980 (largeur de la fenêtre - margin) afin de définir une position verticale
 
     if (side === 0) { // top
         el.style.top = 0;
@@ -44,6 +44,11 @@ function spawnPlanet() {
         mouseOver(this)
     };
 
+    if (window.innerWidth <= "992px") {
+        newPlanet.onclick = function() {
+            onClick(this);
+        }
+    }
     document.getElementById('main').appendChild(newPlanet); //rattache l'objet créé à son parent (#jeu)
     direction(newPlanet);
 
@@ -72,6 +77,12 @@ function spawnBonus() {
         mouseOver(this)
     };
 
+    if (window.innerWidth <= "992px") {
+        newBonus.onclick = function() {
+            onClick(this);
+        }
+    }
+
     document.getElementById('main').appendChild(newBonus);
     direction(newBonus);
 
@@ -88,6 +99,30 @@ window.addEventListener("mousemove", function(evenementmousemove) {
 });
 
 function mouseOver(el) {
+    if (el.classList.contains("goodplanet")) {
+        el.style.display = "none";
+        cpt++;
+        document.getElementById("baclette").innerHTML = "Score : " + cpt;
+    } else if (el.classList.contains("chrono")) {
+        el.style.display = "none";
+        timeLeft = timeLeft + 9;
+        timer.innerHTML = timeLeft;
+    } else if (el.classList.contains("booster")) {
+        el.style.display = "none";
+        cpt = cpt + 5;
+        document.getElementById("baclette").innerHTML = "Score : " + cpt;
+    } else if (el.classList.contains("badplanet")) {
+        if (cpt > 0) {
+            el.style.display = "none";
+            cpt--;
+            document.getElementById("baclette").innerHTML = "Score : " + cpt;
+        } else {
+            el.style.display = "none";
+            document.getElementById("baclette").innerHTML = "Score : 0";
+        }
+    }
+}
+function onClick(el) {
     if (el.classList.contains("goodplanet")) {
         el.style.display = "none";
         cpt++;
