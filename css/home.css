@@ -172,5 +172,5 @@
         .container .inside_container {width: 100%;}
         .container .inside_container #play, #rules, #team {font-size: 35px;}
         #rules_p.visible {width: 100%; margin-top: 0;}
-        #rules_p p {font-size: 25px;}
+        #rules_p p {font-size: 25px; line-height: 30px;}
     }
