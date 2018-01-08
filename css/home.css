@@ -28,6 +28,7 @@
         height: 100%;
         color: aliceblue;
         font-size: 27px;
+        text-shadow: 4px 3px 0px black;
     }
     #rules {
         margin-top: 0;
@@ -155,17 +156,19 @@
     }
     @media screen and (max-width: 1024px) {
         .title {font-size: 60px;}
-        .accroche_team {font-size: 30px;}
+        .accroche_team {font-size: 30px;}    
+    }
+    @media screen and (max-width: 992px) {
         #container_avatar div {width: 40%}
         #container_avatar {
             flex-wrap: wrap; 
             justify-content: center;
         }
+        .container_team #play {font-size: 40px;}
         #container_avatar img {
             height: auto;
             width: 100%;
         }
-    }
-    @media screen and (max-width: 600px) {
-        #play {font-size: 40px;}
+        .container .inside_container {width: 100%;}
+        .container .inside_container #play, #rules, #team {font-size: 35px;}
     }
