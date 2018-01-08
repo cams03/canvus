@@ -315,9 +315,8 @@ button:hover {
       }
       #cover, #cover2 {
         width: 90%;
-        top: calc(50% - 200px);
+        top: calc(40% - 200px);
       }
-      #levels button {font-size: 35px; padding: 10px}
-      button {color: #9b158b;}
+      #levels button {font-size: 35px; padding: 10px;}
    }
    
