@@ -1,5 +1,5 @@
 const margin = 20;
-
+console.log(window.innerWidth);
 function direction(el) {
     // DEFINITION DES DIRECTIONS
     // 0:top, 1:right, 2:bottom, 3:left
@@ -44,7 +44,9 @@ function spawnPlanet() {
         mouseOver(this)
     };
 
-    if (window.innerWidth <= "992px") {
+    if (window.innerWidth < 992) {
+        newPlanet.style.width = "180px";
+        newPlanet.style.height = "180px";
         newPlanet.onclick = function() {
             onClick(this);
         }
@@ -77,7 +79,9 @@ function spawnBonus() {
         mouseOver(this)
     };
 
-    if (window.innerWidth <= "992px") {
+    if (window.innerWidth < 992) {
+        newBonus.style.width = "180px";
+        newBonus.style.height = "180px";
         newBonus.onclick = function() {
             onClick(this);
         }
