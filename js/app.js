@@ -1,3 +1,27 @@
+/*var getBrowserWidth = function(){
+    if(window.innerWidth < 768){
+        // Extra Small Device
+        return "xs";
+    } else if(window.innerWidth < 991){
+        // Small Device
+        return "sm"
+    } else if(window.innerWidth < 1199){
+        // Medium Device
+        return "md"
+    } else {
+        // Large Device
+        return "lg"
+    }
+};
+
+var device = getBrowserWidth();
+
+if(device === "xs"){
+  // Enter your script for handheld devices here 
+}
+
+*/
+
 const margin = 20;
 console.log(window.innerWidth);
 function direction(el) {
