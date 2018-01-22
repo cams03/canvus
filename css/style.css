@@ -35,6 +35,9 @@ footer {
        position: absolute;
        font-family: space, sans-serif;
        z-index: 200000;
+       -webkit-box-align: center;
+       -ms-flex-align: center;
+       align-items: center;
        display: -webkit-box;
        display: -ms-flexbox;
        display: flex;
@@ -298,7 +301,7 @@ button:hover {
    }
    @media screen and (max-width: 992px) {
       footer, .timer {font-size: 60px;}
-      #baclette {width: 625px;}
+      #baclette {width: 45%;}
       #score h1, #levels h1 {font-size: 54px;}
       #score #high_score {font-size: 40px;}
       #score p {font-size: 30px;}
@@ -320,4 +323,6 @@ button:hover {
       #levels button {font-size: 35px; padding: 10px;}
       #cursorperso {display: none;}
    }
-   
+   @media screen and (max-width: 600px) {
+    #mute, #sound, #pause, #play, #home {width: 70px;}
+   }
