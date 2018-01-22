@@ -35,9 +35,9 @@ footer {
        position: absolute;
        font-family: space, sans-serif;
        z-index: 200000;
-       -webkit-box-align: center;
-       -ms-flex-align: center;
-       align-items: center;
+       -webkit-box-align:end;
+       -ms-flex-align:end;
+       align-items:flex-end;
        display: -webkit-box;
        display: -ms-flexbox;
        display: flex;
@@ -315,14 +315,10 @@ button:hover {
           height: 400px;
           background-color: rgba(255, 255, 255, 0.5);
           z-index: 200000;
-      }
-      #cover, #cover2 {
-        width: 90%;
-        top: calc(40% - 200px);
+          width: 90%;
+          top: calc(40% - 200px);
       }
       #levels button {font-size: 35px; padding: 10px;}
       #cursorperso {display: none;}
-   }
-   @media screen and (max-width: 600px) {
-    #mute, #sound, #pause, #play, #home {width: 70px;}
+      #mute, #sound, #pause, #play, #home {width: 70px;}
    }
