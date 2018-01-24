@@ -176,9 +176,9 @@
             width: 100%;
         }
         .container .inside_container {width: 100%;}
-        .container .inside_container .play, #rules, #team {font-size: 35px;}
+        .container .inside_container .play, #rules, #team {font-size: 30px;}
         #rules_p.visible {width: 100%; margin-top: 0;}
-        #rules_p p {font-size: 25px; line-height: 30px;}
+        #rules_p p {font-size: 20px; line-height: 25px;}
     }
     @media screen and (max-width: 600px) {
         .title {font-size: 50px;}
@@ -197,6 +197,7 @@
         }
         #rules {width: auto;}
         .play, #rules, #team {margin: auto;}
+        #rules_p p {position: absolute; bottom: 10px;}
     }
     @media screen and (max-width: 400px) {
         .accroche, .accroche_team {font-size: 20px;}
