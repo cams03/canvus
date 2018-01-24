@@ -18,6 +18,7 @@
         width: 100%;
         color: cornflowerblue;
         text-align: center;
+        text-shadow: 2px 2px white;
     }
     h1 {
         font-size: 90px;
@@ -173,4 +174,17 @@
         .container .inside_container #play, #rules, #team {font-size: 35px;}
         #rules_p.visible {width: 100%; margin-top: 0;}
         #rules_p p {font-size: 25px; line-height: 30px;}
+    }
+    @media screen and (max-width: 600px) {
+        .title {font-size: 50px;}
+        .accroche, .accroche_team {font-size: 30px;}
+        .inside_container {
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            height: 190px;
+        }
+        #rules {width: auto;}
+        #play, #rules, #team {margin: auto;}
+
     }
