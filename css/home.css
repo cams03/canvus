@@ -32,6 +32,14 @@
         width: 40%;
         text-decoration: underline;
         cursor: pointer;
+        max-height: 50px;
+        overflow: hidden;
+        transition: all 0.4s;
+    }
+    #rules.visible {
+        max-height: 3000px;
+        margin: 0;
+        transition: all 0.2s, max-height 4.8s;
     }
     .play:hover,
     #rules:hover,
@@ -40,20 +48,15 @@
             -ms-transform: scale(1.2);
                 transform: scale(1.2);
     }
-    #rules_p {
-        display: none;
+    #rules .hidden_content {
         background-color: rgba(84, 79, 79, 0.7);
         text-align: center;
         font-family: "zekton";
-    }
-    #rules_p.visible {
-        display: block;
-        width: 80%;
-        margin: auto;
-    }
-    #rules_p p {
+        width: 100%;
         color: white;
         font-size: 20px;
+        text-shadow: none;
+        text-decoration: none!important;
     }
     #container_avatar {
       width: 90%;
@@ -131,7 +134,6 @@
       margin-top: 0;
     }
     .inside_container {
-        width: 70%;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -177,8 +179,7 @@
         }
         .container .inside_container {width: 100%;}
         .container .inside_container .play, #rules, #team {font-size: 30px;}
-        #rules_p.visible {width: 100%; margin-top: 0;}
-        #rules_p p {font-size: 20px; line-height: 25px;}
+        .hidden_content {font-size: 20px; line-height: 25px;}
     }
     @media screen and (max-width: 600px) {
         .title {font-size: 50px;}
@@ -193,11 +194,9 @@
             -webkit-box-align: center;
                 -ms-flex-align: center;
                     align-items: center;
-            height: 190px;
         }
         #rules {width: auto;}
         .play, #rules, #team {margin: auto;}
-        #rules_p.visible {position: absolute; bottom: 10px;}
     }
     @media screen and (max-width: 400px) {
         .accroche, .accroche_team {font-size: 20px;}

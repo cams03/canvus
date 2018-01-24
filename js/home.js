@@ -1,5 +1,9 @@
 //HOMEPAGE INSTRUCTIONS
-
-document.getElementById('rules').addEventListener("click", function () {
-    document.getElementById('rules_p').classList.add('visible');
+var container = document.getElementById('rules');
+container.addEventListener("click", function () {
+    if (!container.classList.contains("visible")) {
+    	container.className += "visible";
+    } else {
+    	container.classList.remove("visible");
+    }
 });
