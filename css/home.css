@@ -77,8 +77,12 @@
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
           -ms-flex-direction: column;
@@ -160,8 +164,11 @@
     @media screen and (max-width: 992px) {
         #container_avatar div {width: 40%}
         #container_avatar {
-            flex-wrap: wrap; 
-            justify-content: center;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap; 
+            -webkit-box-pack: center; 
+                -ms-flex-pack: center; 
+                    justify-content: center;
         }
         .container_team #play {font-size: 40px;}
         #container_avatar img {
@@ -177,9 +184,15 @@
         .title {font-size: 50px;}
         .accroche, .accroche_team {font-size: 30px;}
         .inside_container {
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            -ms-flex-pack: distribute;
+                justify-content: space-around;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
             height: 190px;
         }
         #rules {width: auto;}

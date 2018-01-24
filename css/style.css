@@ -336,7 +336,7 @@ button:hover {
       #cover, #cover2 {width: 100%;}
       #score h1, #levels h1, #baclette, #timer {font-size: 34px;}
       .timer {width: 15%;}
-      #levels.visible {display: flex;flex-direction: column;}
+      #levels.visible {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-orient: vertical;-webkit-box-direction: normal;-ms-flex-direction: column;flex-direction: column;}
    }
    @media screen and (max-width: 400px) {
       #score p {font-size: 20px;}
