@@ -305,7 +305,7 @@ button:hover {
    }
    @media screen and (max-width: 992px) {
       footer, .timer {font-size: 60px;}
-      #baclette {width: 45%;}
+      #baclette {width: 50%;}
       #score h1, #levels h1 {font-size: 54px;}
       #score #high_score {font-size: 40px;}
       #score p {font-size: 30px;}
@@ -335,6 +335,18 @@ button:hover {
    @media screen and (max-width: 600px) {
       #cover, #cover2 {width: 100%;}
       #score h1, #levels h1, #baclette, #timer {font-size: 34px;}
-      #timer {width: 90px;}
+      .timer {width: 15%;}
       #levels.visible {display: flex;flex-direction: column;}
    }
+   @media screen and (max-width: 400px) {
+      #score p {font-size: 20px;}
+      #score h1 {font-size: 30px;}
+      #mute, #sound, #pause, #play, #home {width: 34px;}
+      #score #high_score {font-size: 25px;}
+      #baclette, #timer {font-size: 22px;}
+      button {
+        font-size: 20px;
+        width: 90%;
+        margin: 10px auto;
+      }
+    }

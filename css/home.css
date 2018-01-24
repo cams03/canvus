@@ -188,6 +188,5 @@
     @media screen and (max-width: 400px) {
         .accroche, .accroche_team {font-size: 20px;}
         .container .inside_container #play, #rules, #team {font-size: 25px; margin: 0 auto;}
-        #mute, #sound, #pause, #play, #home {width: 34px;}
         #baclette, #timer {font-size: 25px;}
     }
