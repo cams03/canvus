@@ -30,9 +30,8 @@
     #rules {
         margin-top: 0;
         width: 40%;
-        text-decoration: underline;
         cursor: pointer;
-        max-height: 50px;
+        max-height: 45px;
         overflow: hidden;
         transition: all 0.4s;
     }
@@ -41,8 +40,9 @@
         margin: 0;
         transition: all 0.2s, max-height 4.8s;
     }
+    #rules span {text-decoration: underline;}
     .play:hover,
-    #rules:hover,
+    #rules span:hover,
     #team:hover {
         -webkit-transform: scale(1.2);
             -ms-transform: scale(1.2);
@@ -54,9 +54,8 @@
         font-family: "zekton";
         width: 100%;
         color: white;
-        font-size: 20px;
+        font-size: 18px;
         text-shadow: none;
-        text-decoration: none!important;
     }
     #container_avatar {
       width: 90%;
@@ -199,6 +198,8 @@
         .play, #rules, #team {margin: auto;}
     }
     @media screen and (max-width: 400px) {
+        .container_team .title {font-size: 26px;}
         .accroche, .accroche_team {font-size: 20px;}
         .container .inside_container .play, #rules, #team {font-size: 25px; margin: 0 auto;}
+        .container_team .credits {width: 100%;font-size: 8px;}
     }
