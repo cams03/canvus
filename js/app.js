@@ -23,7 +23,6 @@ if(device === "xs"){
 */
 
 const margin = 20;
-console.log(window.innerWidth);
 function direction(el) {
     // DEFINITION DES DIRECTIONS
     // 0:top, 1:right, 2:bottom, 3:left
@@ -162,25 +161,25 @@ function mouseOver(el) {
     }
 }
 function onClick(el) {
-    if (el.classList.contains("goodplanet")) {
-        el.style.display = "none";
+    if (el.target.classList.contains("goodplanet")) {
+        el.target.style.display = "none";
         cpt++;
         document.getElementById("baclette").innerHTML = "Score : " + cpt;
-    } else if (el.classList.contains("chrono")) {
-        el.style.display = "none";
+    } else if (el.target.classList.contains("chrono")) {
+        el.target.style.display = "none";
         timeLeft = timeLeft + 9;
         timer.innerHTML = timeLeft;
-    } else if (el.classList.contains("booster")) {
-        el.style.display = "none";
+    } else if (el.target.classList.contains("booster")) {
+        el.target.style.display = "none";
         cpt = cpt + 5;
         document.getElementById("baclette").innerHTML = "Score : " + cpt;
-    } else if (el.classList.contains("badplanet")) {
+    } else if (el.target.classList.contains("badplanet")) {
         if (cpt > 0) {
-            el.style.display = "none";
+            el.target.style.display = "none";
             cpt--;
             document.getElementById("baclette").innerHTML = "Score : " + cpt;
         } else {
-            el.style.display = "none";
+            el.target.style.display = "none";
             document.getElementById("baclette").innerHTML = "Score : 0";
         }
     }
