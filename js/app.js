@@ -71,7 +71,7 @@ function spawnPlanet() {
         newPlanet.style.width = "180px";
         newPlanet.style.height = "180px";
         newPlanet.addEventListener("click", function() {
-            onClick(this);
+            onClick();
         });
     }
      if (window.innerWidth < 600) {
@@ -110,7 +110,7 @@ function spawnBonus() {
         newBonus.style.width = "180px";
         newBonus.style.height = "180px";
         newBonus.addEventListener("click",function() {
-            onClick(this);
+            onClick();
         });
     }
     if (window.innerWidth < 600) {
