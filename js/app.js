@@ -29,7 +29,7 @@ function direction(el) {
     const side = Math.floor(Math.random() * 4); // tirage aléatoire d'un nombre entre 0 et 4 qui définira le point de départ
     const fromX = Math.floor(Math.random() * (window.innerWidth - (2 * margin))) + margin; //tirage aléatoire d'un nombre entre 20 (margin) et 980 (largeur de la fenêtre - margin) afin de définir une position horizontale
     const fromY = Math.floor(Math.random() * (window.innerHeight - (2 * margin))) + margin; //tirage aléatoire d'un nombre entre 20 (margin) et 980 (largeur de la fenêtre - margin) afin de définir une position verticale
-    console.log(fromY);
+    
     if (side === 0) { // top
         el.style.top = 0;
         el.style.left = fromX + "px";
@@ -70,7 +70,7 @@ function spawnPlanet() {
     if (window.innerWidth < 992) {
         newPlanet.style.width = "180px";
         newPlanet.style.height = "180px";
-        newPlanet.addEventListener("touchstart", function() {
+        newPlanet.addEventListener("click", function() {
             onClick(this);
         });
     }
@@ -109,7 +109,7 @@ function spawnBonus() {
     if (window.innerWidth < 992) {
         newBonus.style.width = "180px";
         newBonus.style.height = "180px";
-        newBonus.addEventListener("touchstart",function() {
+        newBonus.addEventListener("click",function() {
             onClick(this);
         });
     }
