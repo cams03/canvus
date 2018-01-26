@@ -70,7 +70,7 @@ function spawnPlanet() {
     if (window.innerWidth < 992) {
         newPlanet.style.width = "180px";
         newPlanet.style.height = "180px";
-        newPlanet.addEventListener("click", function() {
+        newPlanet.addEventListener("touchstart", function() {
             onClick(this);
         });
     }
@@ -109,16 +109,13 @@ function spawnBonus() {
     if (window.innerWidth < 992) {
         newBonus.style.width = "180px";
         newBonus.style.height = "180px";
-        newBonus.addEventListener("click",function() {
+        newBonus.addEventListener("touchstart",function() {
             onClick(this);
         });
     }
     if (window.innerWidth < 600) {
         newBonus.style.width = "80px";
         newBonus.style.height = "80px";
-        newBonus.onclick = function() {
-            onClick(this);
-        }
     }
 
     document.getElementById('main').appendChild(newBonus);
