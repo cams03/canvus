@@ -71,16 +71,13 @@ function spawnPlanet() {
     if (window.innerWidth < 992) {
         newPlanet.style.width = "180px";
         newPlanet.style.height = "180px";
-        newPlanet.onclick = function() {
+        newPlanet.addEventListener("click", function() {
             onClick(this);
-        }
+        });
     }
      if (window.innerWidth < 600) {
         newPlanet.style.width = "80px";
         newPlanet.style.height = "80px";
-        newPlanet.onclick = function() {
-            onClick(this);
-        }
     }
     document.getElementById('main').appendChild(newPlanet); //rattache l'objet créé à son parent (#jeu)
     direction(newPlanet);
@@ -113,9 +110,9 @@ function spawnBonus() {
     if (window.innerWidth < 992) {
         newBonus.style.width = "180px";
         newBonus.style.height = "180px";
-        newBonus.onclick = function() {
+        newBonus.addEventListener("click",function() {
             onClick(this);
-        }
+        });
     }
     if (window.innerWidth < 600) {
         newBonus.style.width = "80px";
