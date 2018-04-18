@@ -48,7 +48,7 @@
             -ms-transform: scale(1.2);
                 transform: scale(1.2);
     }
-    #play:visited, #play:focus, #play {color: #fff;}
+    #play:visited, #play:focus, #play {color: white;}
     #rules .hidden_content {
         background-color: rgba(84, 79, 79, 0.7);
         text-align: center;
@@ -134,6 +134,7 @@
       margin-top: 0;
     }
     .inside_container {
+        color: white;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
